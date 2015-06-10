@@ -65,7 +65,7 @@ password | (required) A user provided account password
 ## Generate a new API token
 
 ```http
-GET /api/v1/new_token HTTP/1.1
+GET /api/v1/account/new_token HTTP/1.1
 Host: api.arkis.io
 Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json
@@ -83,7 +83,7 @@ Create an new JSON Web Token for your account, returns the newly created token.
 
 ### HTTP Request
 
-`GET /api/v1/new_token`
+`GET /api/v1/account/new_token`
 
 <aside class="warning">
 This will revoke your previous API token.
@@ -92,7 +92,7 @@ This will revoke your previous API token.
 ## Change account password
 
 ```http
-PATCH /api/v1/change_password HTTP/1.1
+PATCH /api/v1/account/change_password HTTP/1.1
 Host: api.arkis.io
 Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json
@@ -102,7 +102,7 @@ Change your account password.
 
 ### HTTP Request
 
-`PATCH /api/v1/change_password`
+`PATCH /api/v1/account/change_password`
 
 ### JSON Parameters
 

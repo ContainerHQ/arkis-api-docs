@@ -17,7 +17,7 @@ updated_at  | The date and time when the profile was updated last
 ## Get your profile
 
 ```http
-GET /api/v1/profile HTTP/1.1
+GET /api/v1/account/profile HTTP/1.1
 Host: api.arkis.io
 Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json
@@ -43,12 +43,12 @@ Returns you user profile.
 
 ### HTTP Request
 
-`GET /api/v1/profile`
+`GET /api/v1/account/profile`
 
 ## Modify your profile
 
 ```http
-POST /api/v1/profile HTTP/1.1
+POST /api/v1/account/profile HTTP/1.1
 Host: api.arkis.io
 Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json
@@ -58,7 +58,7 @@ Update you user profile.
 
 ### HTTP Request
 
-`PATCH /api/v1/profile`
+`PATCH /api/v1/account/profile`
 
 ### JSON Parameters
 
