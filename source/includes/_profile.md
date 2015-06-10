@@ -16,10 +16,6 @@ updated_at  | The date and time when the profile was updated last
 
 ## Get your profile
 
-Returns you user profile.
-
-### HTTP Request
-
 ```http
 GET /api/v1/profile HTTP/1.1
 Host: api.arkis.io
@@ -35,13 +31,17 @@ Accept: application/json
         "id": 3,
         "user_id": 3,
         "fullname": "Saul Tigh",
-        "company": "Cylons, Inc"
+        "company": "Cylons, Inc",
         "location": "Caprica",
         "created_at": "2015-06-10T16:11:14.149Z",
         "updated_at": "2015-06-10T16:11:14.149Z",
     }
 }
 ```
+
+Returns you user profile.
+
+### HTTP Request
 
 `GET /api/v1/profile`
 
