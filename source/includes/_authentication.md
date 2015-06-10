@@ -83,7 +83,7 @@ Create an new JSON Web Token for your account, returns the newly created token.
 
 ### HTTP Request
 
-`POST /api/v1/auth/login`
+`POST /api/v1/new_token`
 
 <aside class="warning">
 This will revoke your previous API token.
