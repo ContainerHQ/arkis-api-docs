@@ -30,7 +30,6 @@ List all clusters avalaible. Returns a list of `Cluster` objects.
 
 Parameter   | Description
 ---------   | -----------
-name        | Filter by cluster name
 strategy    | Filter by strategy
 state       | Filter by state
 limit       | Limits the number of returned objects (by defauts returns all records)

@@ -35,11 +35,10 @@ List all nodes avalaible. Returns a list of `Node` objects.
 
 Parameter   | Description
 ---------   | -----------
-name        | Filter by name
 state       | Filter by state
 cluster     | Filter by cluster UUID
 region      | Filter by region
-master      | Filter all master nodes
+master      | Filter by master (`true`/`false`)
 node_size   | Filter by node size
 labels      | Filter by a list of labels (e.g. `[{ "region": "us-east", "environment": "production" }]`)
 limit       | Limits the number of returned objects (by defauts returns all records)
