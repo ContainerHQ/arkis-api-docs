@@ -1,0 +1,962 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Arkis API Reference</title>
+
+    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="javascripts/all.js" type="text/javascript"></script>
+
+      <script>
+        $(function() {
+          setupLanguages(["http"]);
+        });
+      </script>
+  </head>
+
+  <body class="index">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="http">http</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        
+          <h1 id="introduction">Introduction</h1>
+
+<p><strong>Arkis</strong> currently offers a <strong>HTTP REST API</strong> wich is used by the Web UI. In this
+document you will find all API operations currently supported in the service
+and examples on how to execute them.</p>
+
+<h2 id="docker-api">Docker API</h2>
+
+<p><strong>Arkis</strong> is fully compatible with both
+<a href="https://docs.docker.com/reference/api/docker_remote_api/">Docker API</a> and
+<a href="http://docs.docker.com/swarm/API/">Docker Swarm API</a>.</p>
+
+<p>You can reach our Docker API through the following hostname:</p>
+
+<p><code class="prettyprint">https://api.arkis.io</code></p>
+
+<p>Or to reach a specific Docker API version:</p>
+
+<p><code class="prettyprint">https://api.arkis.io/v1.18</code></p>
+
+<p>However, in order to target your cluster running on <strong>Arkis</strong>, you must specify
+your cluster&rsquo;s <strong>token</strong> by adding to all requests sent to this endpoints the
+following header:</p>
+
+<p><code class="prettyprint">X-Arkis-Cluster: CLUSTER_TOKEN</code></p>
+
+<aside class="notice">
+You must replace <code>CLUSTER_TOKEN</code> with your cluster token.
+</aside>
+
+          <h1 id="authentication">Authentication</h1>
+
+<p>In order to be able to make requests to the Arkis API, you should first
+obtain a JSON Web Token for your account. For this, you can either use
+the <code class="prettyprint">API Key</code> section on your dashboard, or use our authentication
+endpoints (See <a href="/#account">Account</a>).</p>
+
+<h2 id="rest-api">REST API</h2>
+
+<p>The Arkis REST API is reachable through the following hostname:</p>
+
+<p><code class="prettyprint">https://api.arkis.io</code></p>
+
+<p>All requests to our REST API should be sent to this endpoint with the
+following <code class="prettyprint">Authorization</code> header:</p>
+
+<p><code class="prettyprint">Authorization: JWT JSON_WEB_TOKEN_STRING</code></p>
+
+<aside class="notice">
+You must replace <code>JSON_WEB_TOKEN_STRING</code> with your personal API
+token.
+</aside>
+
+<p>HTTP responses are given in JSON format, so the following <code class="prettyprint">Accept</code> header
+is required for every API call:</p>
+
+<p><code class="prettyprint">Accept: application/json</code></p>
+
+<aside class="success">
+Authentication endpoints (starting with <code>/auth</code>) are available
+without this header.
+</aside>
+
+<h2 id="register-/-sign-in">Register / Sign in</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1/auth/login</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZvbGllYUBhcmtpcy5pbyIsImppdCI6ImJkM2QwYjYwLTBmMjEtMTFlNS1hN2RiLTFmNTM3MDNlOTVlOCIsImlhdCI6MTQzMzkwNzMyOH0.BQStzEqRlP-v0VUow6H6IppfzWHoONbHekWq3hG6YTk"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Create an account and returns the JSON Web Token of this account.
+If the account already exist and the credentials are corrects,
+returns the JSON Web Token of the existing account.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/auth/login</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Your account email</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Your account password</td>
+</tr>
+</tbody></table>
+
+<h2 id="generate-a-new-api-token">Generate a new API token</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1/new_token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZvbGllYUBhcmtpcy5pbyIsImppdCI6ImJkM2QwYjYwLTBmMjEtMTFlNS1hN2RiLTFmNTM3MDNlOTVlOCIsImlhdCI6MTQzMzkwNzMyOH0.BQStzEqRlP-v0VUow6H6IppfzWHoONbHekWq3hG6YTk"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Create an new JSON Web Token for your account, returns the newly created token.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/auth/login</code></p>
+
+<aside class="warning">
+This will revoke your previous API token.
+</aside>
+
+          <h1 id="profile">Profile</h1>
+
+<p>The user profile.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>A unique identifier for the cluster generated automatically on creation.</td>
+</tr>
+<tr>
+<td>fullname</td>
+<td>Fullname of the user</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Location of the user</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-your-profile">Get your profile</h2>
+
+<p>Returns you user profile.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/profile</code></p>
+
+<h2 id="modify-your-profile">Modify your profile</h2>
+
+<p>Update you user profile.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH /api/v1/profile</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fullname</td>
+<td>(optional) A user provided name for the profile</td>
+</tr>
+<tr>
+<td>location</td>
+<td>(optional) A user provided location for the profile</td>
+</tr>
+</tbody></table>
+
+          <h1 id="cluster">Cluster</h1>
+
+<p>A cluster is a group of nodes wich are on the same private network.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>A unique identifier (UUID) for the cluster generated automatically on creation</td>
+</tr>
+<tr>
+<td>name</td>
+<td>A user provided name for the cluster</td>
+</tr>
+<tr>
+<td>token</td>
+<td>Token key to reach the cluster</td>
+</tr>
+<tr>
+<td>strategy</td>
+<td>Strategy for ranking the node (see <a href="https://docs.docker.com/swarm/scheduler/strategy/">Strategies</a>)</td>
+</tr>
+<tr>
+<td>state</td>
+<td>State of the cluster</td>
+</tr>
+<tr>
+<td>state_message</td>
+<td>User-friendly informations about the state of the cluster</td>
+</tr>
+<tr>
+<td>nodes_count</td>
+<td>The number of containers present in the cluster</td>
+</tr>
+<tr>
+<td>nodes</td>
+<td>A list of resource UUID of <code class="prettyprint">Node</code> objects present in the cluster</td>
+</tr>
+<tr>
+<td>containers_count</td>
+<td>The number of containers present in the cluster</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>The date and time when this cluster was created</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>The date and time when this cluster was updated last</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-all-clusters">List all clusters</h2>
+
+<p>List all clusters avalaible. Returns a list of <code class="prettyprint">Cluster</code> objects.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/cluster</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Filter by cluster name</td>
+</tr>
+<tr>
+<td>strategy</td>
+<td>Filter by strategy</td>
+</tr>
+<tr>
+<td>state</td>
+<td>Filter by state</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Limits the number of returned objects (by defauts returns all records)</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Returns one page of records at a time (by default, sets the <code class="prettyprint">limit</code> parameter to 10)</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-new-cluster">Create a new cluster</h2>
+
+<p>Creates a new cluster without deploying it.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/cluster</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>(required) A user provided name for the cluster</td>
+</tr>
+<tr>
+<td>strategy</td>
+<td>(required) A user provided strategy for the cluster (e.g. <code class="prettyprint">spread</code>, <code class="prettyprint">binpack</code> or <code class="prettyprint">random</code>)</td>
+</tr>
+<tr>
+<td>nodes</td>
+<td>(required) A list of <code class="prettyprint">Node</code> objects for the cluster (must have at least one node)</td>
+</tr>
+</tbody></table>
+
+<h3 id="get-an-existing-cluster">Get an existing cluster</h3>
+
+<p>Get all the informations of a specific cluster.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/cluster/:id/</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The UUID of the cluster to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="destroy-a-cluster">Destroy a cluster</h2>
+
+<p>Destroy all the nodes in a cluster and the cluster itself. This is irreversible.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /api/v1/cluster/:id/</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The UUID of the cluster to retrieve</td>
+</tr>
+</tbody></table>
+
+          <h1 id="node">Node</h1>
+
+<p>A node is a docker machine provided by a cloud provider where docker containers
+can be deployed.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>A unique identifier (UUID) for the node generated automatically on creation</td>
+</tr>
+<tr>
+<td>cluster</td>
+<td>The cluster UUID of which the node belongs</td>
+</tr>
+<tr>
+<td>name</td>
+<td>A user provided name for the node (see <a href="/#regions">Regions</a>)</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>A list of labels to identify the node when running containers (see <a href="/#labels">Labels</a>)</td>
+</tr>
+<tr>
+<td>state</td>
+<td>The state of the node. See the below table for a list of possible states</td>
+</tr>
+<tr>
+<td>state_message</td>
+<td>User-friendly informations about the state of the node</td>
+</tr>
+<tr>
+<td>fqdn</td>
+<td>An automatically generated FQDN for the node</td>
+</tr>
+<tr>
+<td>public_ip</td>
+<td>The public IP of the node</td>
+</tr>
+<tr>
+<td>region</td>
+<td>The name identifier of the region where the node is deployed</td>
+</tr>
+<tr>
+<td>node_size</td>
+<td>The name identifier of the node size object of this node (see <a href="/#node-sizes">Node sizes</a>)</td>
+</tr>
+<tr>
+<td>master</td>
+<td>Whether the node is the master of its cluster</td>
+</tr>
+<tr>
+<td>cpu</td>
+<td>Number of CPU&rsquo;s core</td>
+</tr>
+<tr>
+<td>disk</td>
+<td>Storage size in GB</td>
+</tr>
+<tr>
+<td>memory</td>
+<td>Memory in MB</td>
+</tr>
+<tr>
+<td>docker_version</td>
+<td>Docker&rsquo;s version used in the node</td>
+</tr>
+<tr>
+<td>deployed_at</td>
+<td>The date and time when this node was deployed</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>The date and time when this node was updated last</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-all-nodes">List all nodes</h2>
+
+<p>List all nodes avalaible. Returns a list of <code class="prettyprint">Node</code> objects.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/node</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Filter by name</td>
+</tr>
+<tr>
+<td>state</td>
+<td>Filter by state</td>
+</tr>
+<tr>
+<td>cluster</td>
+<td>Filter by cluster UUID</td>
+</tr>
+<tr>
+<td>region</td>
+<td>Filter by region</td>
+</tr>
+<tr>
+<td>master</td>
+<td>Filter all master nodes</td>
+</tr>
+<tr>
+<td>node_size</td>
+<td>Filter by node size</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>Filter by a list of labels (e.g. <code class="prettyprint">[{ &quot;region&quot;: &quot;us-east&quot;, &quot;environment&quot;: &quot;production&quot; }]</code>)</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Limits the number of returned objects (by defauts returns all records)</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Returns one page of records at a time (by default, sets the <code class="prettyprint">limit</code> parameter to 10)</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-new-node">Create a new node</h2>
+
+<p>Creates a new node.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/node</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cluster</td>
+<td>(required) Cluster UUID to which the newly created node will belong</td>
+</tr>
+<tr>
+<td>name</td>
+<td>(required) Name of the node</td>
+</tr>
+<tr>
+<td>region</td>
+<td>(required) The name identifier of the region where the node will be deployed (see <a href="/#regions">Regions</a>)</td>
+</tr>
+<tr>
+<td>node_size</td>
+<td>(required) Name identifier of the node size object desired for the node (see <a href="/#node-sizes">Node sizes</a>)</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>(optional) List of labels to identify the node (see <a href="/#labels">Labels</a>)</td>
+</tr>
+</tbody></table>
+
+<h3 id="get-an-existing-node">Get an existing node</h3>
+
+<p>Get all the informations of a specific node.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/node/:id/</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The UUID of the node to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="destroy-a-cluster">Destroy a cluster</h2>
+
+<p>Remove a node from the cluster and destroy the node itself. This is irreversible.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /api/v1/node/:id/</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The UUID of the node to retrieve</td>
+</tr>
+</tbody></table>
+
+          <h1 id="labels">Labels</h1>
+
+<p>Labels are key/value pairs associated to particular nodes.</p>
+
+<p>When creating a container, the user can select a subset of nodes that should
+be considered for scheduling by specifying one or more sets of matching
+key/value pairs.</p>
+
+<p>This approach has several practical use cases such as:</p>
+
+<ul>
+<li>Selecting specific host properties (such as <code class="prettyprint">storage=ssd</code>, in order to schedule
+containers on specific hardware).</li>
+<li>Tagging nodes based on their physical location (<code class="prettyprint">region=us-east</code>, to force
+containers to run on a given location).</li>
+<li>Logical cluster partitioning (<code class="prettyprint">environment=production</code>, to split a cluster into
+sub-clusters with different properties).</li>
+</ul>
+
+<p>See <a href="https://docs.docker.com/swarm/scheduler/filter/">Docker Swarm Filters</a>.</p>
+
+<aside class="warning">
+Labels can&rsquo;t be updated when the node is already deployed!
+</aside>
+
+<h3 id="label-object">Label Object</h3>
+
+<p>A label object is represented as a simple json object.</p>
+
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"production"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_app"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="official-labels">Official Labels</h3>
+
+<p><strong>Arkis</strong> is taking care of specifying the following of labels:</p>
+
+<ul>
+<li><code class="prettyprint">storage</code></li>
+<li><code class="prettyprint">region</code></li>
+<li><code class="prettyprint">memory</code></li>
+<li><code class="prettyprint">cpu</code></li>
+<li><code class="prettyprint">disk</code></li>
+</ul>
+
+<p><strong>This labels are reserved and therefore can&rsquo;t be provided by the user.</strong></p>
+
+          <h1 id="node-sizes">Node Sizes</h1>
+
+<p>A node size is a representation of an instance size supported in a certain
+region.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>An name identifier for the node size</td>
+</tr>
+<tr>
+<td>label</td>
+<td>A user-friendly name for the node size</td>
+</tr>
+<tr>
+<td>cpu</td>
+<td>Number of CPU&rsquo;s core</td>
+</tr>
+<tr>
+<td>disk</td>
+<td>Storage size in GB</td>
+</tr>
+<tr>
+<td>memory</td>
+<td>Memory in MB</td>
+</tr>
+<tr>
+<td>regions</td>
+<td>A list of regions name identifier where the node can currently be deployed (see <a href="/#regions">Regions</a>)</td>
+</tr>
+<tr>
+<td>available</td>
+<td>Whether the node size is currently available for new deployments</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-all-node-sizes">List all node sizes</h2>
+
+<p>List all node sizes currently supported. Returns a list of <code class="prettyprint">NodeSize</code> objects.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/nodesizes</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Filter by node type name</td>
+</tr>
+<tr>
+<td>regions</td>
+<td>Filter by regions name identifier currently available</td>
+</tr>
+<tr>
+<td>available</td>
+<td>Filter by availability (<code class="prettyprint">true</code>/<code class="prettyprint">false</code>)</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Limits the number of returned objects (by defauts returns all records)</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Returns one page of records at a time (by default, sets the <code class="prettyprint">limit</code> parameter to 10)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-an-existing-node-size">Get an existing node size</h2>
+
+<p>Get all informations of a specific node size.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/nodesize/:name/</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The name identifier of the node size to retrieve</td>
+</tr>
+</tbody></table>
+
+          <h1 id="regions">Regions</h1>
+
+<p>A region is a representation of an entire or a subset of a data center.
+It contains one and more node sizes.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>An identifier for the region</td>
+</tr>
+<tr>
+<td>label</td>
+<td>A user-friendly name for the region</td>
+</tr>
+<tr>
+<td>available</td>
+<td>Whether the region is currently available for new deployments</td>
+</tr>
+<tr>
+<td>node_sizes</td>
+<td>A list of node size name identifier available in the region (see <a href="/#node-sizes">Node sizes</a>)</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-all-regions">List all regions</h2>
+
+<p>List all regions currently supported. Returns a list of <code class="prettyprint">Region</code> objects.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/regions</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Filter by region name identifier</td>
+</tr>
+<tr>
+<td>available</td>
+<td>Filter by availability (<code class="prettyprint">true</code>/<code class="prettyprint">false</code>)</td>
+</tr>
+<tr>
+<td>node_sizes</td>
+<td>Filter by node sizes name identifier currently available (see <a href="/#node-sizes">Node sizes</a>)</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Limits the number of returned objects (by defauts returns all records)</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Returns one page of records at a time (by default, sets the <code class="prettyprint">limit</code> parameter to 10)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-an-existing-region">Get an existing region</h2>
+
+<p>Get all informations of a specific region.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/region/:name/</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The name identifier of the region to retrieve</td>
+</tr>
+</tbody></table>
+
+          <h1 id="errors">Errors</h1>
+
+<p>The Arkis API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; There’s a problem in the content of your request.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your password or API Key is wrong or revoked.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified resource could not be found.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+<h2 id="validation-errors">Validation Errors</h2>
+
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation len failed"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation error"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation len failed"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>When you receive a <code class="prettyprint">400 Bad Request</code> error, you will find in the response body
+and array of validation errors to help you identify what&rsquo;s wrong in your
+request.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>An error message</td>
+</tr>
+<tr>
+<td>type</td>
+<td>The type of the validation error</td>
+</tr>
+<tr>
+<td>path</td>
+<td>The field that triggered the validation error</td>
+</tr>
+<tr>
+<td>value</td>
+<td>The value that generated the error</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="http">http</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
