@@ -34,7 +34,7 @@ Accept: application/json
         "company": "Cylons, Inc",
         "location": "Caprica",
         "created_at": "2015-06-10T16:11:14.149Z",
-        "updated_at": "2015-06-10T16:11:14.149Z",
+        "updated_at": "2015-06-10T16:11:14.149Z"
     }
 }
 ```
