@@ -59,13 +59,13 @@ returns the JSON Web Token of the existing account.
 
 Parameter | Description
 --------- | -----------
-email | Your account email
-password | Your account password
+email | (required) A user provided account email
+password | (required) A user provided account password
 
 ## Generate a new API token
 
 ```http
-POST /api/v1/new_token HTTP/1.1
+GET /api/v1/new_token HTTP/1.1
 Host: api.arkis.io
 Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json
@@ -83,8 +83,31 @@ Create an new JSON Web Token for your account, returns the newly created token.
 
 ### HTTP Request
 
-`POST /api/v1/new_token`
+`GET /api/v1/new_token`
 
 <aside class="warning">
 This will revoke your previous API token.
 </aside>
+
+## Change account password
+
+```http
+PATCH /api/v1/change_password HTTP/1.1
+Host: api.arkis.io
+Authorization: JWT JSON_WEB_TOKEN
+Accept: application/json
+```
+
+Change your account password.
+
+### HTTP Request
+
+`PATCH /api/v1/change_password`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+current_password | (required) Current password of the user
+password | (required) New password for the user
+password_confirmation | (required) New password confirmation
