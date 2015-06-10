@@ -187,15 +187,31 @@ This will revoke your previous API token.
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>A unique identifier for the cluster generated automatically on creation.</td>
+<td>A unique identifier for the use profile generated automatically on creation</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>A unique identifier of the user the profile belongs to</td>
 </tr>
 <tr>
 <td>fullname</td>
 <td>Fullname of the user</td>
 </tr>
 <tr>
+<td>company</td>
+<td>Comparny of the user</td>
+</tr>
+<tr>
 <td>location</td>
 <td>Location of the user</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>The date and time when the profile was created</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>The date and time when the profile was updated last</td>
 </tr>
 </tbody></table>
 
@@ -204,10 +220,36 @@ This will revoke your previous API token.
 <p>Returns you user profile.</p>
 
 <h3 id="http-request">HTTP Request</h3>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1/profile</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saul Tigh"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cylons, Inc"</span><span class="w">
+        </span><span class="s2">"location"</span><span class="err">:</span><span class="w"> </span><span class="s2">"Caprica"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p><code class="prettyprint">GET /api/v1/profile</code></p>
 
 <h2 id="modify-your-profile">Modify your profile</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1/profile</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
 
 <p>Update you user profile.</p>
 
@@ -226,6 +268,10 @@ This will revoke your previous API token.
 <tr>
 <td>fullname</td>
 <td>(optional) A user provided name for the profile</td>
+</tr>
+<tr>
+<td>company</td>
+<td>(optional) A user provided company for the profile</td>
 </tr>
 <tr>
 <td>location</td>
