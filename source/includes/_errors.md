@@ -29,7 +29,7 @@ Error Code | Meaning
 ```
 
 When you receive a `400 Bad Request` error, you will find in the response body
-and array of validation errors to help you identify what's wrong in your
+and array of validation errors to help you identify what is wrong in your
 request.
 
 ### Attributes

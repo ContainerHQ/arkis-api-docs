@@ -111,3 +111,41 @@ Parameter | Description
 old_password | (required) Current password of the user
 new_password | (required) New password for the user
 new_password_confirmation | (required) New password confirmation
+
+## Change account email
+
+```http
+PATCH /api/v1/account/change_email HTTP/1.1
+Host: api.arkis.io
+Authorization: JWT JSON_WEB_TOKEN
+Accept: application/json
+```
+
+Change your account email address.
+
+### HTTP Request
+
+`PATCH /api/v1/account/change_email`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+password | (required) Current password of the user
+new_email | (required) New email address for the user
+
+## Cancel account
+
+```http
+DELETE /api/v1/account/ HTTP/1.1
+Host: api.arkis.io
+Authorization: JWT JSON_WEB_TOKEN
+Accept: application/json
+```
+
+Cancel your account.
+
+<aside class="warning">
+This will destroy your clusters and nodes affiliated. Your subscription will
+be terminated immediately and you will no longer be able to login to Arkis.
+</aside>
