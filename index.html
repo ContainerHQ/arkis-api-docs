@@ -199,7 +199,7 @@ This will revoke your previous API token.
 <td>(required) Current password of the user</td>
 </tr>
 <tr>
-<td>new_password</td>
+<td>password</td>
 <td>(required) New password for the user</td>
 </tr>
 <tr>
@@ -280,7 +280,7 @@ This will revoke your previous API token.
 <p><code class="prettyprint">GET /api/v1/account/profile</code></p>
 
 <h2 id="modify-your-profile">Modify your profile</h2>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1/account/profile</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">PATCH</span> <span class="nn">/api/v1/account/profile</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
