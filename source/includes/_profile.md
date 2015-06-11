@@ -48,7 +48,7 @@ Returns you user profile.
 ## Modify your profile
 
 ```http
-POST /api/v1/account/profile HTTP/1.1
+PATCH /api/v1/account/profile HTTP/1.1
 Host: api.arkis.io
 Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json

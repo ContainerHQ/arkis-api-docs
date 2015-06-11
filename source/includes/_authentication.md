@@ -109,5 +109,5 @@ Change your account password.
 Parameter | Description
 --------- | -----------
 old_password | (required) Current password of the user
-new_password | (required) New password for the user
+password | (required) New password for the user
 password_confirmation | (required) New password confirmation
