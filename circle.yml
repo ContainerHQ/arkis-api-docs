@@ -1,0 +1,9 @@
+test:
+  override:
+    - rake build
+
+deployment:
+  github_pages:
+    branch: master
+    commands:
+      - rake publish

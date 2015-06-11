@@ -24,8 +24,3 @@ dev: clean build
 
 detach:
 	docker run -d -p $(PORT):4567 --name $(project_name) $(image_name)
-
-deploy: build
-	docker run \
-	-v $(HOME)/.ssh:/root/.ssh \
-	-ti $(image_name) rake publish

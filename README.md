@@ -48,13 +48,11 @@ You can run the documentation server on another port of your Docker host
 by specifying the environment variable `PORT` (default: `4567`) before any
 of the previous commands (except clean).
 
-### Deploy the documentation on [GitHub Pages](https://pages.github.com/)
+### Deployment
 
-    make deploy
-
->**Caution!** You need push access to the targeted repository to deploy this
-documentation. The path `$HOME/.ssh` is mounted for that purpose inside the
-container with a volume.
+ The documentation is automatically deployed on
+[GitHub Pages](https://pages.github.com/) when something happen on the
+master branch.
 
 ## Contributing
 
