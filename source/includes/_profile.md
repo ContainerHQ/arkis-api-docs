@@ -39,13 +39,13 @@ Accept: application/json
 }
 ```
 
-Returns you user profile.
+Returns you user account profile.
 
 ### HTTP Request
 
 `GET /api/v1/account/profile`
 
-## Modify your profile
+## Update your account profile
 
 ```http
 PATCH /api/v1/account/profile HTTP/1.1
@@ -54,7 +54,7 @@ Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json
 ```
 
-Update you user profile.
+Update you user account profile.
 
 ### HTTP Request
 
