@@ -1,6 +1,6 @@
 test:
   override:
-    - rake build
+    - echo "No test suite for this project"
 
 deployment:
   github_pages:
