@@ -208,6 +208,9 @@ This will revoke your previous API token.
 </tr>
 </tbody></table>
 
+<p>Returns a <code class="prettyprint">403: Forbidden&#39; status if the</code>old_password` doesn&rsquo;t match
+the user current password.</p>
+
 <h2 id="change-account-email">Change account email</h2>
 <pre class="highlight http"><code><span class="nf">PATCH</span> <span class="nn">/api/v1/account/change_email</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
@@ -239,6 +242,9 @@ This will revoke your previous API token.
 </tr>
 </tbody></table>
 
+<p>Returns a <code class="prettyprint">403: Forbidden&#39; status if the</code>password` doesn&rsquo;t match
+the user current password.</p>
+
 <h2 id="cancel-account">Cancel account</h2>
 <pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/api/v1/account/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
@@ -247,6 +253,27 @@ This will revoke your previous API token.
 </code></pre>
 
 <p>Cancel your account.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /api/v1/account/account</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>password</td>
+<td>(required) Current password of the user</td>
+</tr>
+</tbody></table>
+
+<p>Returns a <code class="prettyprint">403: Forbidden&#39; status if the</code>password` doesn&rsquo;t match
+the user current password.</p>
 
 <aside class="warning">
 This will destroy your clusters and nodes affiliated. Your subscription will
