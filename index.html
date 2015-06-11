@@ -208,6 +208,51 @@ This will revoke your previous API token.
 </tr>
 </tbody></table>
 
+<h2 id="change-account-email">Change account email</h2>
+<pre class="highlight http"><code><span class="nf">PATCH</span> <span class="nn">/api/v1/account/change_email</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<p>Change your account email address.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH /api/v1/account/change_email</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>password</td>
+<td>(required) Current password of the user</td>
+</tr>
+<tr>
+<td>new_email</td>
+<td>(required) New email address for the user</td>
+</tr>
+</tbody></table>
+
+<h2 id="cancel-account">Cancel account</h2>
+<pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/api/v1/account/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<p>Cancel your account.</p>
+
+<aside class="warning">
+This will destroy your clusters and nodes affiliated. Your subscription will
+be terminated immediately and you will no longer be able to login to Arkis.
+</aside>
+
           <h1 id="profile">Profile</h1>
 
 <p>The user profile.</p>
@@ -987,7 +1032,7 @@ It contains one and more node sizes.</p>
 </span></code></pre>
 
 <p>When you receive a <code class="prettyprint">400 Bad Request</code> error, you will find in the response body
-and array of validation errors to help you identify what&rsquo;s wrong in your
+and array of validation errors to help you identify what is wrong in your
 request.</p>
 
 <h3 id="attributes">Attributes</h3>
