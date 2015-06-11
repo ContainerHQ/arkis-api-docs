@@ -112,7 +112,7 @@ old_password | (required) Current password of the user
 new_password | (required) New password for the user
 new_password_confirmation | (required) New password confirmation
 
-Returns a `403: Forbidden' status if the `old_password` doesn't match
+Returns a `403` error code if the `old_password` parameter doesn't match
 the user current password.
 
 ## Change account email
@@ -137,7 +137,7 @@ Parameter | Description
 password | (required) Current password of the user
 new_email | (required) New email address for the user
 
-Returns a `403: Forbidden' status if the `password` doesn't match
+Returns a `403` error code if the `password` parameter doesn't match
 the user current password.
 
 ## Cancel account
@@ -161,7 +161,7 @@ Parameter | Description
 --------- | -----------
 password | (required) Current password of the user
 
-Returns a `403: Forbidden' status if the `password` doesn't match
+Returns a `403` error code if the `password` parameter doesn't match
 the user current password.
 
 <aside class="warning">
