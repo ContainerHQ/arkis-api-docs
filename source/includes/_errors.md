@@ -6,6 +6,7 @@ Error Code | Meaning
 ---------- | -------
 400 | Bad Request -- There’s a problem in the content of your request.
 401 | Unauthorized -- Your password or API Key is wrong or revoked.
+403 | Forbidden -- The action or resource requested is forbidden.
 404 | Not Found -- The specified resource could not be found.
 406 | Not Acceptable -- You requested a format that isn't json.
 500 | Internal Server Error -- We had a problem with our server. Try again later.
