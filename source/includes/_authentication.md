@@ -112,6 +112,9 @@ old_password | (required) Current password of the user
 new_password | (required) New password for the user
 new_password_confirmation | (required) New password confirmation
 
+Returns a `403: Forbidden' status if the `old_password` doesn't match
+the user current password.
+
 ## Change account email
 
 ```http
@@ -134,6 +137,9 @@ Parameter | Description
 password | (required) Current password of the user
 new_email | (required) New email address for the user
 
+Returns a `403: Forbidden' status if the `password` doesn't match
+the user current password.
+
 ## Cancel account
 
 ```http
@@ -144,6 +150,19 @@ Accept: application/json
 ```
 
 Cancel your account.
+
+### HTTP Request
+
+`DELETE /api/v1/account/account`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+password | (required) Current password of the user
+
+Returns a `403: Forbidden' status if the `password` doesn't match
+the user current password.
 
 <aside class="warning">
 This will destroy your clusters and nodes affiliated. Your subscription will
