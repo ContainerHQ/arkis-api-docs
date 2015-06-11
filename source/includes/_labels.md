@@ -38,7 +38,7 @@ A label object is represented as a simple json object.
 
 ### Official Labels
 
-**Arkis** is taking care of specifying the following of labels:
+**Arkis** is taking care of specifying the following labels:
 
 - `storage`
 - `region`
