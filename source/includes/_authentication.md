@@ -157,7 +157,7 @@ Cancel your account.
 
 ### HTTP Request
 
-`DELETE /api/v1/account/account`
+`DELETE /api/v1/account/`
 
 ### JSON Parameters
 
