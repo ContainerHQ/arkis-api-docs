@@ -112,7 +112,9 @@ old_password | (required) Current password of the user
 new_password | (required) New password for the user
 new_password_confirmation | (required) New password confirmation
 
-Returns a `403` error code if the `old_password` parameter doesn't match
+Returns a `204` status code if the password has been successfully updated.
+
+Returns a `403` status code if the `old_password` parameter doesn't match
 the user current password.
 
 ## Change account email
@@ -137,6 +139,8 @@ Parameter | Description
 password | (required) Current password of the user
 new_email | (required) New email address for the user
 
+Returns a `204` status code if the email has been successfully updated.
+
 Returns a `403` error code if the `password` parameter doesn't match
 the user current password.
 
@@ -160,6 +164,8 @@ Cancel your account.
 Parameter | Description
 --------- | -----------
 password | (required) Current password of the user
+
+Returns a `204` status code if the account has been successfully deleted.
 
 Returns a `403` error code if the `password` parameter doesn't match
 the user current password.

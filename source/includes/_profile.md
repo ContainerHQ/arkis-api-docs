@@ -54,6 +54,22 @@ Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json
 ```
 
+> Example
+
+```json
+{
+    "profile": {
+        "id": 3,
+        "user_id": 3,
+        "fullname": "Saul Tigh",
+        "company": "Battlestar",
+        "location": "Caprica",
+        "created_at": "2015-06-10T16:11:14.149Z",
+        "updated_at": "2015-08-10T16:11:14.149Z"
+    }
+}
+```
+
 Update you user account profile.
 
 ### HTTP Request
