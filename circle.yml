@@ -2,6 +2,10 @@ dependencies:
   override:
     - bundle install
 
+compile:
+  override:
+    - echo "No compilation step"
+
 test:
   override:
     - echo "No test suite for this project"
