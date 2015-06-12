@@ -14,4 +14,6 @@ deployment:
   github_pages:
     branch: master
     commands:
+      - git config user.email "bot@containerhq.io"
+      - git config user.name "Publish Bot"
       - rake publish
