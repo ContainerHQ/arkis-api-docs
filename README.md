@@ -57,8 +57,8 @@ master branch.
 
 ## Contributing
 
-See the contributing [guidelines](/contributing).
+See the contributing [guidelines](CONTRIBUTING.md).
 
 ## Licensing
-arkis-api-docs is licensed under the MIT License. See [LICENSE](/license) for
+arkis-api-docs is licensed under the MIT License. See [LICENSE](LICENSE) for
 full license text.
