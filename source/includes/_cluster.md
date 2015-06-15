@@ -12,7 +12,7 @@ token       | Token key to reach the cluster
 strategy    | Strategy for ranking the node (see [Strategies](https://docs.docker.com/swarm/scheduler/strategy/))
 state       | State of the cluster
 state_message | User-friendly informations about the state of the cluster
-nodes_count | The number of containers present in the cluster
+nodes_count | The number of nodes present in the cluster
 nodes    | A list of resource UUID of `Node` objects present in the cluster
 containers_count | The number of containers present in the cluster
 created_at  | The date and time when this cluster was created
@@ -49,9 +49,8 @@ Parameter | Description
 --------- | -----------
 name  | (required) A user provided name for the cluster
 strategy | (required) A user provided strategy for the cluster (e.g. `spread`, `binpack` or `random`)
-nodes | (required) A list of `Node` objects for the cluster (must have at least one node)
 
-### Get an existing cluster
+## Get an existing cluster
 
 Get all the informations of a specific cluster.
 
