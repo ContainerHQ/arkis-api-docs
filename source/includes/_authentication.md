@@ -3,7 +3,7 @@
 In order to be able to make requests to the Arkis API, you should first
 obtain a JSON Web Token for your account. For this, you can either use
 the `API Key` section on your dashboard, or use our authentication
-endpoints (See [Account](/#account)).
+endpoints.
 
 ## REST API
 
