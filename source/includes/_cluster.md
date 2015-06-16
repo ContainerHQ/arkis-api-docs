@@ -48,7 +48,9 @@ Creates a new cluster without deploying it.
 Parameter | Description
 --------- | -----------
 name  | (required) A user provided name for the cluster
-strategy | (required) A user provided strategy for the cluster (e.g. `spread`, `binpack` or `random`)
+strategy | (optional) A user provided strategy for the cluster (e.g. `spread`, `binpack` or `random`)
+
+If not specified by the user, the default strategy of a cluster will be set to `spread`.
 
 ## Get an existing cluster
 
@@ -77,3 +79,17 @@ Destroy all the nodes in a cluster and the cluster itself. This is irreversible.
 Parameter | Description
 --------- | -----------
 id | The UUID of the cluster to retrieve
+
+# Cluster State
+
+States possible for a cluster.
+
+### Attributes
+
+Attribute   | Description
+----------- | -----------
+Idle | Cluster waiting for node(s) to be created
+Deploying | One or more node is being created
+Upgrading | One or more node is being upgraded
+Running | Every node is running perfectly
+PartiallyRunning | One or more node is stopped or down
