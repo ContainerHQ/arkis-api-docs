@@ -522,9 +522,11 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tr>
 <tr>
 <td>strategy</td>
-<td>(required) A user provided strategy for the cluster (e.g. <code class="prettyprint">spread</code>, <code class="prettyprint">binpack</code> or <code class="prettyprint">random</code>)</td>
+<td>(optional) A user provided strategy for the cluster (e.g. <code class="prettyprint">spread</code>, <code class="prettyprint">binpack</code> or <code class="prettyprint">random</code>)</td>
 </tr>
 </tbody></table>
+
+<p>If not specified by the user, the default strategy of a cluster will be set to <code class="prettyprint">spread</code>.</p>
 
 <h2 id="get-an-existing-cluster">Get an existing cluster</h2>
 
@@ -567,6 +569,40 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <tr>
 <td>id</td>
 <td>The UUID of the cluster to retrieve</td>
+</tr>
+</tbody></table>
+
+<h1 id="cluster-state">Cluster State</h1>
+
+<p>States possible for a cluster.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Idle</td>
+<td>Cluster waiting for node(s) to be created</td>
+</tr>
+<tr>
+<td>Deploying</td>
+<td>One or more node is being created</td>
+</tr>
+<tr>
+<td>Upgrading</td>
+<td>One or more node is being upgraded</td>
+</tr>
+<tr>
+<td>Running</td>
+<td>Every node is running perfectly</td>
+</tr>
+<tr>
+<td>PartiallyRunning</td>
+<td>One or more node is stopped or down</td>
 </tr>
 </tbody></table>
 
