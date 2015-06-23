@@ -585,23 +585,27 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tr>
 </thead><tbody>
 <tr>
-<td>Idle</td>
+<td>idle</td>
 <td>Cluster waiting for node(s) to be created</td>
 </tr>
 <tr>
-<td>Deploying</td>
-<td>One or more node is being created</td>
+<td>unavailable</td>
+<td>Cluster&rsquo;s master node is missing / down or being deployed / upgraded</td>
 </tr>
 <tr>
-<td>Upgrading</td>
+<td>deploying</td>
+<td>One or more node is being deployed</td>
+</tr>
+<tr>
+<td>upgrading</td>
 <td>One or more node is being upgraded</td>
 </tr>
 <tr>
-<td>Running</td>
+<td>running</td>
 <td>Every node is running perfectly</td>
 </tr>
 <tr>
-<td>PartiallyRunning</td>
+<td>partially_running</td>
 <td>One or more node is stopped or down</td>
 </tr>
 </tbody></table>
