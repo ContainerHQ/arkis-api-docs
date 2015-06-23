@@ -74,6 +74,7 @@ Accept: application/json
         "created_at": "2015-06-10T16:11:14.149Z",
         "updated_at": "2015-06-10T16:11:14.149Z",
         "nodes_count": "0",
+        "containers_count": "0",
         "user_id": "2126",
         "state: "idle"
     }
