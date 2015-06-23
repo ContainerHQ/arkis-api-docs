@@ -76,7 +76,7 @@ Accept: application/json
         "nodes_count": "0",
         "containers_count": "0",
         "user_id": "2126",
-        "state: "idle"
+        "state": "idle"
     }
 }
 ```
