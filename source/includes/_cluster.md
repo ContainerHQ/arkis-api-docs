@@ -88,8 +88,9 @@ States possible for a cluster.
 
 Attribute   | Description
 ----------- | -----------
-Idle | Cluster waiting for node(s) to be created
-Deploying | One or more node is being created
-Upgrading | One or more node is being upgraded
-Running | Every node is running perfectly
-PartiallyRunning | One or more node is stopped or down
+idle | Cluster waiting for node(s) to be created
+unavailable | Cluster's master node is missing / down or being deployed / upgraded
+deploying | One or more node is being deployed
+upgrading | One or more node is being upgraded
+running | Every node is running perfectly
+partially_running | One or more node is stopped or down
