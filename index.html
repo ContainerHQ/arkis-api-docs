@@ -472,7 +472,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/cluster</code></p>
+<p><code class="prettyprint">GET /api/v1/clusters</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -506,7 +506,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/cluster</code></p>
+<p><code class="prettyprint">POST /api/v1/clusters</code></p>
 
 <h3 id="json-parameters">JSON Parameters</h3>
 
@@ -529,12 +529,36 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <p>If not specified by the user, the default strategy of a cluster will be set to <code class="prettyprint">spread</code>.</p>
 
 <h2 id="get-an-existing-cluster">Get an existing cluster</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1/clusters/:id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"cluster"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"state_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create at least one node to work with this cluster"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14813a80-19fa-11e5-a214-93ad3da1a84e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grounds-production"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2gkspjuanpg2pgb90oharv9qepsw0zfr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spread"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2126"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state: "</span><span class="err">idle"</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>Get all the informations of a specific cluster.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/cluster/:id/</code></p>
+<p><code class="prettyprint">GET /api/v1/clusters/:id/</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -551,12 +575,17 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tbody></table>
 
 <h2 id="destroy-a-cluster">Destroy a cluster</h2>
+<pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/api/v1/clusters/:id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
 
 <p>Destroy all the nodes in a cluster and the cluster itself. This is irreversible.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE /api/v1/cluster/:id/</code></p>
+<p><code class="prettyprint">DELETE /api/v1/clusters/:id/</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -571,6 +600,8 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <td>The UUID of the cluster to retrieve</td>
 </tr>
 </tbody></table>
+
+<p>Returns a <code class="prettyprint">204</code> status code if the cluster has been successfully deleted.</p>
 
 <h1 id="cluster-state">Cluster State</h1>
 
@@ -590,7 +621,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tr>
 <tr>
 <td>unavailable</td>
-<td>Cluster&rsquo;s master node is missing / down or being deployed / upgraded</td>
+<td>Cluster&rsquo;s master node is missing / down or being deployed / upgraded / started / stopped</td>
 </tr>
 <tr>
 <td>deploying</td>
@@ -609,6 +640,10 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <td>One or more node is stopped or down</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+You can&rsquo;t reach the Docker API of a cluster in `unavailable` state.
+</aside>
 
           <h1 id="node">Node</h1>
 
@@ -845,7 +880,7 @@ sub-clusters with different properties).</li>
 <p>See <a href="https://docs.docker.com/swarm/scheduler/filter/">Docker Swarm Filters</a>.</p>
 
 <aside class="warning">
-Labels can&rsquo;t be updated when the node is already deployed!
+Labels can&rsquo;t be updated when the node is already deployed.
 </aside>
 
 <h3 id="label-object">Label Object</h3>
