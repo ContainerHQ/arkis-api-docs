@@ -24,7 +24,7 @@ List all clusters avalaible. Returns a list of `Cluster` objects.
 
 ### HTTP Request
 
-`GET /api/v1/cluster`
+`GET /api/v1/clusters`
 
 ### Query Parameters
 
@@ -41,7 +41,7 @@ Creates a new cluster without deploying it.
 
 ### HTTP Request
 
-`POST /api/v1/cluster`
+`POST /api/v1/clusters`
 
 ### JSON Parameters
 
@@ -54,11 +54,37 @@ If not specified by the user, the default strategy of a cluster will be set to `
 
 ## Get an existing cluster
 
+```http
+GET /api/v1/clusters/:id HTTP/1.1
+Host: api.arkis.io
+Authorization: JWT JSON_WEB_TOKEN
+Accept: application/json
+```
+
+> Example
+
+```json
+{
+    "cluster": {
+        "state_message": "Create at least one node to work with this cluster",
+        "id": "14813a80-19fa-11e5-a214-93ad3da1a84e",
+        "name": "grounds-production",
+        "token": "2gkspjuanpg2pgb90oharv9qepsw0zfr",
+        "strategy": "spread",
+        "created_at": "2015-06-10T16:11:14.149Z",
+        "updated_at": "2015-06-10T16:11:14.149Z",
+        "nodes_count": "0",
+        "user_id": "2126",
+        "state: "idle"
+    }
+}
+```
+
 Get all the informations of a specific cluster.
 
 ### HTTP Request
 
-`GET /api/v1/cluster/:id/`
+`GET /api/v1/clusters/:id/`
 
 ### Query Parameters
 
@@ -68,17 +94,26 @@ id | The UUID of the cluster to retrieve
 
 ## Destroy a cluster
 
+```http
+DELETE /api/v1/clusters/:id HTTP/1.1
+Host: api.arkis.io
+Authorization: JWT JSON_WEB_TOKEN
+Accept: application/json
+```
+
 Destroy all the nodes in a cluster and the cluster itself. This is irreversible.
 
 ### HTTP Request
 
-`DELETE /api/v1/cluster/:id/`
+`DELETE /api/v1/clusters/:id/`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | -----------
 id | The UUID of the cluster to retrieve
+
+Returns a `204` status code if the cluster has been successfully deleted.
 
 # Cluster State
 
@@ -89,8 +124,12 @@ States possible for a cluster.
 Attribute   | Description
 ----------- | -----------
 idle | Cluster waiting for node(s) to be created
-unavailable | Cluster's master node is missing / down or being deployed / upgraded
+unavailable | Cluster's master node is missing / down or being deployed / upgraded / started / stopped
 deploying | One or more node is being deployed
 upgrading | One or more node is being upgraded
 running | Every node is running perfectly
 partially_running | One or more node is stopped or down
+
+<aside class="warning">
+You can't reach the Docker API of a cluster in `unavailable` state.
+</aside>

@@ -18,7 +18,7 @@ sub-clusters with different properties).
 See [Docker Swarm Filters](https://docs.docker.com/swarm/scheduler/filter/).
 
 <aside class="warning">
-Labels can't be updated when the node is already deployed!
+Labels can't be updated when the node is already deployed.
 </aside>
 
 ### Label Object
