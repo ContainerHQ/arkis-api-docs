@@ -20,6 +20,45 @@ updated_at  | The date and time when this cluster was updated last
 
 ## List all clusters
 
+```http
+GET /api/v1/clusters HTTP/1.1
+Host: api.arkis.io
+Authorization: JWT JSON_WEB_TOKEN
+Accept: application/json
+```
+
+> Example
+
+```json
+{
+    "clusters": [{
+        "state_message": "Create at least one node to work with this cluster",
+        "id": "14813a80-19fa-11e5-a214-93ad3da1a84e",
+        "name": "staging",
+        "token": "pgb90oharv9qep2gkspjuanpg2sw0zfr",
+        "strategy": "binpack",
+        "created_at": "2015-06-10T16:11:14.149Z",
+        "updated_at": "2015-06-10T16:11:14.149Z",
+        "nodes_count": "0",
+        "containers_count": "0",
+        "user_id": "2126",
+        "state": "idle"
+    }, {
+        "state_message": "Everything is running smoothly",
+        "id": "14813a81-19fa-11e5-a214-93ad3da1a84e",
+        "name": "production",
+        "token": "2gkspjuanpg2pgb90oharv9qepsw0zfr",
+        "strategy": "spread",
+        "created_at": "2015-06-05T16:09:20.149Z",
+        "updated_at": "2015-06-05T16:09:28.149Z",
+        "nodes_count": "7",
+        "containers_count": "12",
+        "user_id": "2126",
+        "state": "running"
+    }]
+}
+```
+
 List all clusters avalaible. Returns a list of `Cluster` objects.
 
 ### HTTP Request
@@ -33,7 +72,7 @@ Parameter   | Description
 strategy    | Filter by strategy
 state       | Filter by state
 limit       | Limits the number of returned objects (by defauts returns all records)
-page        | Returns one page of records at a time (by default, sets the `limit` parameter to 10)
+page        | Returns one page of records at a time
 
 ## Create a new cluster
 
@@ -132,5 +171,5 @@ running | Every node is running perfectly
 partially_running | One or more node is stopped or down
 
 <aside class="warning">
-You can't reach the Docker API of a cluster in `unavailable` state.
+You can't reach the Docker API of a cluster in unavailable state.
 </aside>
