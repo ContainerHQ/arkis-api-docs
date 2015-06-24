@@ -467,6 +467,43 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tbody></table>
 
 <h2 id="list-all-clusters">List all clusters</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1/clusters</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"clusters"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"state_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create at least one node to work with this cluster"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14813a80-19fa-11e5-a214-93ad3da1a84e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"staging"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pgb90oharv9qep2gkspjuanpg2sw0zfr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binpack"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"containers_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2126"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"idle"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"state_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Everything is running smoothly"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14813a81-19fa-11e5-a214-93ad3da1a84e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"production"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2gkspjuanpg2pgb90oharv9qepsw0zfr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spread"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05T16:09:20.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05T16:09:28.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"containers_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2126"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>List all clusters avalaible. Returns a list of <code class="prettyprint">Cluster</code> objects.</p>
 
@@ -496,7 +533,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tr>
 <tr>
 <td>page</td>
-<td>Returns one page of records at a time (by default, sets the <code class="prettyprint">limit</code> parameter to 10)</td>
+<td>Returns one page of records at a time</td>
 </tr>
 </tbody></table>
 
@@ -643,7 +680,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tbody></table>
 
 <aside class="warning">
-You can&rsquo;t reach the Docker API of a cluster in `unavailable` state.
+You can&rsquo;t reach the Docker API of a cluster in unavailable state.
 </aside>
 
           <h1 id="node">Node</h1>
