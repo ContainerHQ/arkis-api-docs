@@ -29,7 +29,6 @@ Accept: application/json
 {
     "profile": {
         "id": 3,
-        "user_id": 3,
         "fullname": "Saul Tigh",
         "company": "Cylons, Inc",
         "location": "Caprica",
@@ -60,7 +59,6 @@ Accept: application/json
 {
     "profile": {
         "id": 3,
-        "user_id": 3,
         "fullname": "Saul Tigh",
         "company": "Battlestar",
         "location": "Caprica",

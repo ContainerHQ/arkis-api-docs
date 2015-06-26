@@ -41,7 +41,6 @@ Accept: application/json
         "updated_at": "2015-06-10T16:11:14.149Z",
         "nodes_count": "0",
         "containers_count": "0",
-        "user_id": "2126",
         "state": "idle"
     }, {
         "state_message": "Everything is running smoothly",
@@ -53,7 +52,6 @@ Accept: application/json
         "updated_at": "2015-06-05T16:09:28.149Z",
         "nodes_count": "7",
         "containers_count": "12",
-        "user_id": "2126",
         "state": "running"
     }]
 }
@@ -71,6 +69,7 @@ Parameter   | Description
 ---------   | -----------
 strategy    | Filter by strategy
 state       | Filter by state
+name        | Filter by name
 limit       | Limits the number of returned objects (by defauts returns all records)
 page        | Returns one page of records at a time
 
@@ -94,7 +93,7 @@ If not specified by the user, the default strategy of a cluster will be set to `
 ## Get an existing cluster
 
 ```http
-GET /api/v1/clusters/:id HTTP/1.1
+GET /api/v1/clusters/14813a80-19fa-11e5-a214-93ad3da1a84e/ HTTP/1.1
 Host: api.arkis.io
 Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json
@@ -114,7 +113,6 @@ Accept: application/json
         "updated_at": "2015-06-10T16:11:14.149Z",
         "nodes_count": "0",
         "containers_count": "0",
-        "user_id": "2126",
         "state": "idle"
     }
 }
@@ -135,7 +133,7 @@ id | The UUID of the cluster to retrieve
 ## Destroy a cluster
 
 ```http
-DELETE /api/v1/clusters/:id HTTP/1.1
+DELETE /api/v1/clusters/14813a80-19fa-11e5-a214-93ad3da1a84e/ HTTP/1.1
 Host: api.arkis.io
 Authorization: JWT JSON_WEB_TOKEN
 Accept: application/json
@@ -164,12 +162,12 @@ States possible for a cluster.
 Attribute   | Description
 ----------- | -----------
 idle | Cluster waiting for node(s) to be created
-unavailable | Cluster's master node is missing / down or being deployed / upgraded / started / stopped
-deploying | One or more node is being deployed
-upgrading | One or more node is being upgraded
-running | Every node is running perfectly
-partially_running | One or more node is stopped or down
+unreachable | Cluster's master node is missing / down or being deployed / upgraded / started / stopped
+deploying | One or more node are being deployed
+upgrading | One or more node are being upgraded
+running | All nodes are running perfectly
+partially_running | One or more node are stopped or down or running
 
 <aside class="warning">
-You can't reach the Docker API of a cluster in unavailable state.
+You can't reach the Docker API of a cluster in unreachable state.
 </aside>
