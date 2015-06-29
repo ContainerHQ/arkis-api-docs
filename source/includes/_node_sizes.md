@@ -27,10 +27,8 @@ List all node sizes currently supported. Returns a list of `NodeSize` objects.
 
 Parameter | Description
 --------- | -----------
-regions | Filter by regions name identifier currently available
+region | Filter by region name
 available | Filter by availability (`true`/`false`)
-limit | Limits the number of returned objects (by defauts returns all records)
-page | Returns one page of records at a time (by default, sets the `limit` parameter to 10)
 
 ## Get an existing node size
 

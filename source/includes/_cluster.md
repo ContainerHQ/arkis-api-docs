@@ -39,19 +39,19 @@ Accept: application/json
         "strategy": "binpack",
         "created_at": "2015-06-10T16:11:14.149Z",
         "updated_at": "2015-06-10T16:11:14.149Z",
-        "nodes_count": "0",
-        "containers_count": "0",
-        "state": "idle"
+        "nodes_count": 0,
+        "containers_count": 1,
+        "state": "empty"
     }, {
-        "state_message": "Everything is running smoothly",
+        "state_message": "Cluster is deployed and ready",
         "id": "14813a81-19fa-11e5-a214-93ad3da1a84e",
         "name": "production",
         "token": "2gkspjuanpg2pgb90oharv9qepsw0zfr",
         "strategy": "spread",
         "created_at": "2015-06-05T16:09:20.149Z",
         "updated_at": "2015-06-05T16:09:28.149Z",
-        "nodes_count": "7",
-        "containers_count": "12",
+        "nodes_count": 7,
+        "containers_count": 12,
         "state": "running"
     }]
 }
@@ -111,9 +111,9 @@ Accept: application/json
         "strategy": "spread",
         "created_at": "2015-06-10T16:11:14.149Z",
         "updated_at": "2015-06-10T16:11:14.149Z",
-        "nodes_count": "0",
-        "containers_count": "0",
-        "state": "idle"
+        "nodes_count": 0,
+        "containers_count": 0,
+        "state": "empty"
     }
 }
 ```
@@ -161,12 +161,11 @@ States possible for a cluster.
 
 Attribute   | Description
 ----------- | -----------
-idle | Cluster waiting for node(s) to be created
-unreachable | Cluster's master node is missing / down or being deployed / upgraded / started / stopped
-deploying | One or more node are being deployed
-upgrading | One or more node are being upgraded
-running | All nodes are running perfectly
-partially_running | One or more node are stopped or down or running
+empty | Cluster waiting for node(s) to be created
+unreachable | Cluster's master node is unreachable
+deploying | One or more node(s) are being deployed
+upgrading | One or more node(s) are being upgraded
+running | Cluster is running and reachable
 
 <aside class="warning">
 You can't reach the Docker API of a cluster in unreachable state.
