@@ -475,6 +475,11 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <p>Example</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"clusters"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
         </span><span class="s2">"state_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create at least one node to work with this cluster"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14813a80-19fa-11e5-a214-93ad3da1a84e"</span><span class="p">,</span><span class="w">
@@ -529,11 +534,11 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tr>
 <tr>
 <td>limit</td>
-<td>Limits the number of returned objects (by defauts returns all records)</td>
+<td>Limits the number of returned objects (default: <code class="prettyprint">25</code>)</td>
 </tr>
 <tr>
-<td>page</td>
-<td>Returns one page of records at a time</td>
+<td>offset</td>
+<td>Limits starting with record number (default: <code class="prettyprint">0</code>)</td>
 </tr>
 </tbody></table>
 
@@ -559,7 +564,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tr>
 <tr>
 <td>strategy</td>
-<td>(optional) A user provided strategy for the cluster (e.g. <code class="prettyprint">spread</code>, <code class="prettyprint">binpack</code> or <code class="prettyprint">random</code>)</td>
+<td>(optional) A user provided strategy for the cluster (e.g. <code class="prettyprint">spread</code>, <code class="prettyprint">binpack</code> or <code class="prettyprint">random</code>, default: <code class="prettyprint">spread</code>)</td>
 </tr>
 </tbody></table>
 
@@ -798,14 +803,6 @@ can be deployed.</p>
 <tr>
 <td>labels</td>
 <td>Filter by a list of labels (e.g. <code class="prettyprint">[{ &quot;region&quot;: &quot;us-east&quot;, &quot;environment&quot;: &quot;production&quot; }]</code>)</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>Limits the number of returned objects (by defauts returns all records)</td>
-</tr>
-<tr>
-<td>page</td>
-<td>Returns one page of records at a time (by default, sets the <code class="prettyprint">limit</code> parameter to 10)</td>
 </tr>
 </tbody></table>
 
