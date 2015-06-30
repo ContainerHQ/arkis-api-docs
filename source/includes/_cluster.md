@@ -31,6 +31,11 @@ Accept: application/json
 
 ```json
 {
+    "meta": {
+        "limit": 25,
+        "offset": 0,
+        "total_count": 2
+    },
     "clusters": [{
         "state_message": "Create at least one node to work with this cluster",
         "id": "14813a80-19fa-11e5-a214-93ad3da1a84e",
@@ -70,8 +75,8 @@ Parameter   | Description
 strategy    | Filter by strategy
 state       | Filter by state
 name        | Filter by name
-limit       | Limits the number of returned objects (by defauts returns all records)
-page        | Returns one page of records at a time
+limit       | Limits the number of returned objects (default: `25`)
+offset      | Limits starting with record number (default: `0`)
 
 ## Create a new cluster
 
@@ -86,7 +91,7 @@ Creates a new cluster without deploying it.
 Parameter | Description
 --------- | -----------
 name  | (required) A user provided name for the cluster
-strategy | (optional) A user provided strategy for the cluster (e.g. `spread`, `binpack` or `random`)
+strategy | (optional) A user provided strategy for the cluster (e.g. `spread`, `binpack` or `random`, default: `spread`)
 
 If not specified by the user, the default strategy of a cluster will be set to `spread`.
 

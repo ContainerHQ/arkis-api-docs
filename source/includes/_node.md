@@ -41,8 +41,6 @@ region      | Filter by region
 master      | Filter by master (`true`/`false`)
 node_size   | Filter by node size
 labels      | Filter by a list of labels (e.g. `[{ "region": "us-east", "environment": "production" }]`)
-limit       | Limits the number of returned objects (by defauts returns all records)
-page        | Returns one page of records at a time (by default, sets the `limit` parameter to 10)
 
 ## Create a new node
 
