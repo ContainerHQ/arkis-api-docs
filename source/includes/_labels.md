@@ -45,5 +45,8 @@ A label object is represented as a simple json object.
 - `memory`
 - `cpu`
 - `disk`
+- `fqdn`
+- `ip`
+- `id`
 
 **This labels are reserved and therefore can't be provided by the user.**

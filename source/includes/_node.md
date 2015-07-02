@@ -8,6 +8,7 @@ Attribute   | Description
 id          | A unique identifier (UUID) for the node generated automatically on creation
 cluster     | The cluster UUID of which the node belongs
 name        | A user provided name for the node (see [Regions](/#regions))
+master      | Whether the node is the master of its cluster
 labels      | A list of labels to identify the node when running containers (see [Labels](/#labels))
 state       | The state of the node. See the below table for a list of possible states
 state_message | User-friendly informations about the state of the node
@@ -15,12 +16,8 @@ fqdn        | An automatically generated FQDN for the node
 public_ip   | The public IP of the node
 region      | The name identifier of the region where the node is deployed
 node_size   | The name identifier of the node size object of this node (see [Node sizes](/#node-sizes))
-master      | Whether the node is the master of its cluster
-cpu         | Number of CPU's core
-disk        | Storage size in GB
-memory      | Memory in MB
 docker_version | Docker's version used in the node
-deployed_at | The date and time when this node was deployed
+created_at  | The date and time when this node was deployed
 updated_at  | The date and time when this node was updated last
 
 ## List all nodes

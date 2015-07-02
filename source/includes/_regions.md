@@ -24,8 +24,8 @@ List all regions currently supported. Returns a list of `Region` objects.
 
 Parameter | Description
 --------- | -----------
-available | Filter by availability (`true`/`false`)
 node_size | Filter by node size name (see [Node sizes](/#node-sizes))
+available | Filter by availability (`true`/`false`)
 
 ## Get an existing region
 
