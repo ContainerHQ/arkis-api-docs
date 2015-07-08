@@ -173,5 +173,5 @@ upgrading | One or more node(s) are being upgraded
 running | Cluster is running and reachable
 
 <aside class="warning">
-You can't reach the Docker API of a cluster in unreachable state.
+You can't reach the Docker API of a cluster in a non-running state.
 </aside>
