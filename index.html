@@ -680,7 +680,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tbody></table>
 
 <aside class="warning">
-You can&rsquo;t reach the Docker API of a cluster in unreachable state.
+You can&rsquo;t reach the Docker API of a cluster in a non-running state.
 </aside>
 
           <h1 id="node">Node</h1>
@@ -705,6 +705,10 @@ can be deployed.</p>
 <tr>
 <td>name</td>
 <td>A user provided name for the node (see <a href="/#regions">Regions</a>)</td>
+</tr>
+<tr>
+<td>master</td>
+<td>Whether the node is the master of its cluster</td>
 </tr>
 <tr>
 <td>labels</td>
@@ -735,27 +739,11 @@ can be deployed.</p>
 <td>The name identifier of the node size object of this node (see <a href="/#node-sizes">Node sizes</a>)</td>
 </tr>
 <tr>
-<td>master</td>
-<td>Whether the node is the master of its cluster</td>
-</tr>
-<tr>
-<td>cpu</td>
-<td>Number of CPU&rsquo;s core</td>
-</tr>
-<tr>
-<td>disk</td>
-<td>Storage size in GB</td>
-</tr>
-<tr>
-<td>memory</td>
-<td>Memory in MB</td>
-</tr>
-<tr>
 <td>docker_version</td>
 <td>Docker&rsquo;s version used in the node</td>
 </tr>
 <tr>
-<td>deployed_at</td>
+<td>created_at</td>
 <td>The date and time when this node was deployed</td>
 </tr>
 <tr>
@@ -938,6 +926,9 @@ Labels can&rsquo;t be updated when the node is already deployed.
 <li><code class="prettyprint">memory</code></li>
 <li><code class="prettyprint">cpu</code></li>
 <li><code class="prettyprint">disk</code></li>
+<li><code class="prettyprint">fqdn</code></li>
+<li><code class="prettyprint">ip</code></li>
+<li><code class="prettyprint">id</code></li>
 </ul>
 
 <p><strong>This labels are reserved and therefore can&rsquo;t be provided by the user.</strong></p>
@@ -1081,12 +1072,12 @@ It contains one and more node sizes.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>available</td>
-<td>Filter by availability (<code class="prettyprint">true</code>/<code class="prettyprint">false</code>)</td>
-</tr>
-<tr>
 <td>node_size</td>
 <td>Filter by node size name (see <a href="/#node-sizes">Node sizes</a>)</td>
+</tr>
+<tr>
+<td>available</td>
+<td>Filter by availability (<code class="prettyprint">true</code>/<code class="prettyprint">false</code>)</td>
 </tr>
 </tbody></table>
 
