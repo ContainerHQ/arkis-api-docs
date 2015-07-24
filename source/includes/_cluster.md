@@ -15,6 +15,7 @@ state_message | User-friendly informations about the state of the cluster
 nodes_count | The number of nodes present in the cluster
 nodes    | A list of resource UUID of `Node` objects present in the cluster
 containers_count | The number of containers present in the cluster
+last_ping   | Date and time of the last time the node was contacted by Arkis
 created_at  | The date and time when this cluster was created
 updated_at  | The date and time when this cluster was updated last
 
@@ -43,9 +44,10 @@ Accept: application/json
         "token": "pgb90oharv9qep2gkspjuanpg2sw0zfr",
         "strategy": "binpack",
         "created_at": "2015-06-10T16:11:14.149Z",
-        "updated_at": "2015-06-10T16:11:14.149Z",
+        "updated_at": "2015-06-10T16:11:16.149Z",
         "nodes_count": 0,
         "containers_count": 1,
+        "last_ping": "2015-06-10T16:11:16.149Z",
         "state": "empty"
     }, {
         "state_message": "Cluster is deployed and ready",
@@ -57,6 +59,7 @@ Accept: application/json
         "updated_at": "2015-06-05T16:09:28.149Z",
         "nodes_count": 7,
         "containers_count": 12,
+        "last_ping": "2015-06-05T16:09:28.149Z",
         "state": "running"
     }]
 }
@@ -115,9 +118,10 @@ Accept: application/json
         "token": "2gkspjuanpg2pgb90oharv9qepsw0zfr",
         "strategy": "spread",
         "created_at": "2015-06-10T16:11:14.149Z",
-        "updated_at": "2015-06-10T16:11:14.149Z",
+        "updated_at": "2015-06-10T16:11:13.149Z",
         "nodes_count": 0,
         "containers_count": 0,
+        "last_ping": "2015-06-10T16:11:13.149Z",
         "state": "empty"
     }
 }
