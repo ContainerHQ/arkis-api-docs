@@ -96,7 +96,6 @@ States possible for a node.
 
 Attribute   | Description
 ----------- | -----------
-empty | Waiting for node to be registered (only for `byon` nodes)
 unreachable | Node is unreachable
 deploying | Node is being deployed
 upgrading | Node is being upgraded
