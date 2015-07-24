@@ -455,6 +455,10 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <td>The number of containers present in the cluster</td>
 </tr>
 <tr>
+<td>last_ping</td>
+<td>Date and time of the last time the node was contacted by Arkis</td>
+</tr>
+<tr>
 <td>created_at</td>
 <td>The date and time when this cluster was created</td>
 </tr>
@@ -487,9 +491,10 @@ be terminated immediately and you will no longer be able to login to Arkis.
         </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pgb90oharv9qep2gkspjuanpg2sw0zfr"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binpack"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:16.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"containers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_ping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:16.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"empty"</span><span class="w">
     </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"state_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cluster is deployed and ready"</span><span class="p">,</span><span class="w">
@@ -501,6 +506,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05T16:09:28.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
         </span><span class="s2">"containers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_ping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05T16:09:28.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -588,9 +594,10 @@ be terminated immediately and you will no longer be able to login to Arkis.
         </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2gkspjuanpg2pgb90oharv9qepsw0zfr"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spread"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:13.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"containers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_ping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:13.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"empty"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -707,8 +714,16 @@ can be deployed.</p>
 <td>A user provided name for the node (see <a href="/#regions">Regions</a>)</td>
 </tr>
 <tr>
+<td>byon</td>
+<td>If the node is provided by Arkis or the user (<code class="prettyprint">bring your own node</code>)</td>
+</tr>
+<tr>
 <td>master</td>
 <td>Whether the node is the master of its cluster</td>
+</tr>
+<tr>
+<td>token</td>
+<td>Token key used by Arkis agent to reach the node</td>
 </tr>
 <tr>
 <td>labels</td>
@@ -739,6 +754,10 @@ can be deployed.</p>
 <td>The name identifier of the node size object of this node (see <a href="/#node-sizes">Node sizes</a>)</td>
 </tr>
 <tr>
+<td>last_ping</td>
+<td>Date and time of the last time the node was contacted by Arkis</td>
+</tr>
+<tr>
 <td>docker_version</td>
 <td>Docker&rsquo;s version used in the node</td>
 </tr>
@@ -754,7 +773,7 @@ can be deployed.</p>
 
 <h2 id="list-all-nodes">List all nodes</h2>
 
-<p>List all nodes avalaible. Returns a list of <code class="prettyprint">Node</code> objects.</p>
+<p>List all nodes available. Returns a list of <code class="prettyprint">Node</code> objects.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -773,16 +792,16 @@ can be deployed.</p>
 <td>Filter by state</td>
 </tr>
 <tr>
+<td>master</td>
+<td>Filter by master (<code class="prettyprint">true</code>/<code class="prettyprint">false</code>)</td>
+</tr>
+<tr>
 <td>cluster</td>
 <td>Filter by cluster UUID</td>
 </tr>
 <tr>
 <td>region</td>
 <td>Filter by region</td>
-</tr>
-<tr>
-<td>master</td>
-<td>Filter by master (<code class="prettyprint">true</code>/<code class="prettyprint">false</code>)</td>
 </tr>
 <tr>
 <td>node_size</td>
@@ -873,6 +892,40 @@ can be deployed.</p>
 <tr>
 <td>id</td>
 <td>The UUID of the node to retrieve</td>
+</tr>
+</tbody></table>
+
+<h1 id="node-state">Node State</h1>
+
+<p>States possible for a node.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>empty</td>
+<td>Waiting for node to be registered (only for <code class="prettyprint">byon</code> nodes)</td>
+</tr>
+<tr>
+<td>unreachable</td>
+<td>Node is unreachable</td>
+</tr>
+<tr>
+<td>deploying</td>
+<td>Node is being deployed</td>
+</tr>
+<tr>
+<td>upgrading</td>
+<td>Node is being upgraded</td>
+</tr>
+<tr>
+<td>running</td>
+<td>Node is running and reachable</td>
 </tr>
 </tbody></table>
 
