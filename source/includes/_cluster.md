@@ -131,7 +131,7 @@ Get all the informations of a specific cluster.
 
 ### HTTP Request
 
-`GET /api/v1/clusters/:id/`
+`GET /api/v1/clusters/:cluster_id/`
 
 ### Query Parameters
 
@@ -152,7 +152,7 @@ Destroy all the nodes in a cluster and the cluster itself. This is irreversible.
 
 ### HTTP Request
 
-`DELETE /api/v1/clusters/:id/`
+`DELETE /api/v1/clusters/:cluster_id/`
 
 ### Query Parameters
 

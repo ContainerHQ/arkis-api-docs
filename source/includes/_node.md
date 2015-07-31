@@ -16,39 +16,43 @@ state       | The state of the node. See the below table for a list of possible 
 state_message | User-friendly informations about the state of the node
 fqdn        | An automatically generated FQDN for the node
 public_ip   | The public IP of the node
+agent_cmd   | Command to install Arkis agent (only for byon node)
 region      | The name identifier of the region where the node is deployed
 node_size   | The name identifier of the node size object of this node (see [Node sizes](/#node-sizes))
+cpu         | Node number of CPUs
+disk        | Node storage size in GB
+memory      | Node memory in MB
 last_ping   | Date and time of the last time the node was contacted by Arkis
 docker_version | Docker's version used in the node
 created_at  | The date and time when this node was deployed
 updated_at  | The date and time when this node was updated last
 
-## List all nodes
+## List all nodes of a cluster
 
-List all nodes available. Returns a list of `Node` objects.
+List all nodes available for a cluster. Returns a list of `Node` objects.
 
 ### HTTP Request
 
-`GET /api/v1/node`
+`GET /api/v1/clusters/:cluster_id/node`
 
 ### Query Parameters
 
 Parameter   | Description
----------   | -----------
+----------- | -----------
 state       | Filter by state
 master      | Filter by master (`true`/`false`)
-cluster     | Filter by cluster UUID
 region      | Filter by region
 node_size   | Filter by node size
+byon        | Filter by byon value
 labels      | Filter by a list of labels (e.g. `[{ "region": "us-east", "environment": "production" }]`)
 
-## Create a new node
+## Create a new node for a cluster
 
-Creates a new node.
+Creates a new node for a cluster.
 
 ### HTTP Request
 
-`POST /api/v1/node`
+`POST /api/v1/clusters/:cluster_id/node`
 
 ### JSON Parameters
 
@@ -66,27 +70,29 @@ Get all the informations of a specific node.
 
 ### HTTP Request
 
-`GET /api/v1/node/:id/`
+`GET /api/v1/clusters/:cluster_id/node/:node_id/`
 
 ### Query Parameters
 
-Parameter | Description
---------- | -----------
-id | The UUID of the node to retrieve
+Parameter  | Description
+---------- | -----------
+cluster_id | The UUID of the clusters wich the node to retrieve belongs to
+node_id    | The UUID of the node to retrieve
 
-## Destroy a cluster
+## Destroy a node
 
-Remove a node from the cluster and destroy the node itself. This is irreversible.
+Removes a node from the cluster and destroys the node itself. This is irreversible.
 
 ### HTTP Request
 
-`DELETE /api/v1/node/:id/`
+`DELETE /api/v1/clusters/:cluster_id/node/:node_id/`
 
 ### Query Parameters
 
-Parameter | Description
---------- | -----------
-id | The UUID of the node to retrieve
+Parameter  | Description
+---------- | -----------
+cluster_id | The UUID of the clusters wich the node to retrieve belongs to
+node_id    | The UUID of the node to retrieve
 
 # Node State
 
