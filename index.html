@@ -607,7 +607,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/clusters/:id/</code></p>
+<p><code class="prettyprint">GET /api/v1/clusters/:cluster_id/</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -634,7 +634,7 @@ be terminated immediately and you will no longer be able to login to Arkis.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE /api/v1/clusters/:id/</code></p>
+<p><code class="prettyprint">DELETE /api/v1/clusters/:cluster_id/</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -746,12 +746,28 @@ can be deployed.</p>
 <td>The public IP of the node</td>
 </tr>
 <tr>
+<td>agent_cmd</td>
+<td>Command to install Arkis agent (only for byon node)</td>
+</tr>
+<tr>
 <td>region</td>
 <td>The name identifier of the region where the node is deployed</td>
 </tr>
 <tr>
 <td>node_size</td>
 <td>The name identifier of the node size object of this node (see <a href="/#node-sizes">Node sizes</a>)</td>
+</tr>
+<tr>
+<td>cpu</td>
+<td>Node number of CPUs</td>
+</tr>
+<tr>
+<td>disk</td>
+<td>Node storage size in GB</td>
+</tr>
+<tr>
+<td>memory</td>
+<td>Node memory in MB</td>
 </tr>
 <tr>
 <td>last_ping</td>
@@ -771,13 +787,13 @@ can be deployed.</p>
 </tr>
 </tbody></table>
 
-<h2 id="list-all-nodes">List all nodes</h2>
+<h2 id="list-all-nodes-of-a-cluster">List all nodes of a cluster</h2>
 
-<p>List all nodes available. Returns a list of <code class="prettyprint">Node</code> objects.</p>
+<p>List all nodes available for a cluster. Returns a list of <code class="prettyprint">Node</code> objects.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/node</code></p>
+<p><code class="prettyprint">GET /api/v1/clusters/:cluster_id/node</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -796,10 +812,6 @@ can be deployed.</p>
 <td>Filter by master (<code class="prettyprint">true</code>/<code class="prettyprint">false</code>)</td>
 </tr>
 <tr>
-<td>cluster</td>
-<td>Filter by cluster UUID</td>
-</tr>
-<tr>
 <td>region</td>
 <td>Filter by region</td>
 </tr>
@@ -808,18 +820,22 @@ can be deployed.</p>
 <td>Filter by node size</td>
 </tr>
 <tr>
+<td>byon</td>
+<td>Filter by byon value</td>
+</tr>
+<tr>
 <td>labels</td>
 <td>Filter by a list of labels (e.g. <code class="prettyprint">[{ &quot;region&quot;: &quot;us-east&quot;, &quot;environment&quot;: &quot;production&quot; }]</code>)</td>
 </tr>
 </tbody></table>
 
-<h2 id="create-a-new-node">Create a new node</h2>
+<h2 id="create-a-new-node-for-a-cluster">Create a new node for a cluster</h2>
 
-<p>Creates a new node.</p>
+<p>Creates a new node for a cluster.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/node</code></p>
+<p><code class="prettyprint">POST /api/v1/clusters/:cluster_id/node</code></p>
 
 <h3 id="json-parameters">JSON Parameters</h3>
 
@@ -857,7 +873,7 @@ can be deployed.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/node/:id/</code></p>
+<p><code class="prettyprint">GET /api/v1/clusters/:cluster_id/node/:node_id/</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -868,18 +884,22 @@ can be deployed.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
+<td>cluster_id</td>
+<td>The UUID of the clusters wich the node to retrieve belongs to</td>
+</tr>
+<tr>
+<td>node_id</td>
 <td>The UUID of the node to retrieve</td>
 </tr>
 </tbody></table>
 
-<h2 id="destroy-a-cluster">Destroy a cluster</h2>
+<h2 id="destroy-a-node">Destroy a node</h2>
 
-<p>Remove a node from the cluster and destroy the node itself. This is irreversible.</p>
+<p>Removes a node from the cluster and destroys the node itself. This is irreversible.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE /api/v1/node/:id/</code></p>
+<p><code class="prettyprint">DELETE /api/v1/clusters/:cluster_id/node/:node_id/</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -890,7 +910,11 @@ can be deployed.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
+<td>cluster_id</td>
+<td>The UUID of the clusters wich the node to retrieve belongs to</td>
+</tr>
+<tr>
+<td>node_id</td>
 <td>The UUID of the node to retrieve</td>
 </tr>
 </tbody></table>
