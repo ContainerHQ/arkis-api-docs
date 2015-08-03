@@ -447,16 +447,12 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <td>The number of nodes present in the cluster</td>
 </tr>
 <tr>
-<td>nodes</td>
-<td>A list of resource UUID of <code class="prettyprint">Node</code> objects present in the cluster</td>
-</tr>
-<tr>
 <td>containers_count</td>
 <td>The number of containers present in the cluster</td>
 </tr>
 <tr>
 <td>last_ping</td>
-<td>Date and time of the last time the node was contacted by Arkis</td>
+<td>Date and time of the last time the cluster master node was contacted by Arkis</td>
 </tr>
 <tr>
 <td>created_at</td>
@@ -821,7 +817,7 @@ can be deployed.</p>
 </tr>
 <tr>
 <td>byon</td>
-<td>Filter by byon value</td>
+<td>Filter by byon (<code class="prettyprint">true</code>/<code class="prettyprint">false</code>)</td>
 </tr>
 <tr>
 <td>labels</td>
@@ -846,12 +842,16 @@ can be deployed.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>cluster</td>
-<td>(required) Cluster UUID to which the newly created node will belong</td>
-</tr>
-<tr>
 <td>name</td>
 <td>(required) Name of the node</td>
+</tr>
+<tr>
+<td>master</td>
+<td>(optional) If the node will be the master of its cluster (default: <code class="prettyprint">false</code>)</td>
+</tr>
+<tr>
+<td>byon</td>
+<td>(optional) If the node will be provided by the user or by Arkis (default: <code class="prettyprint">false</code>)</td>
 </tr>
 <tr>
 <td>region</td>
