@@ -43,7 +43,7 @@ state       | Filter by state
 master      | Filter by master (`true`/`false`)
 region      | Filter by region
 node_size   | Filter by node size
-byon        | Filter by byon value
+byon        | Filter by byon (`true`/`false`)
 labels      | Filter by a list of labels (e.g. `[{ "region": "us-east", "environment": "production" }]`)
 
 ## Create a new node for a cluster
@@ -58,8 +58,9 @@ Creates a new node for a cluster.
 
 Parameter | Description
 --------- | -----------
-cluster   | (required) Cluster UUID to which the newly created node will belong
 name | (required) Name of the node
+master | (optional) If the node will be the master of its cluster (default: `false`)
+byon | (optional) If the node will be provided by the user or by Arkis (default: `false`)
 region | (required) The name identifier of the region where the node will be deployed (see [Regions](/#regions))
 node_size | (required) Name identifier of the node size object desired for the node (see [Node sizes](/#node-sizes))
 labels | (optional) List of labels to identify the node (see [Labels](/#labels))

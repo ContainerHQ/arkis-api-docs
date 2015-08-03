@@ -13,9 +13,8 @@ strategy    | Strategy for ranking the node (see [Strategies](https://docs.docke
 state       | State of the cluster
 state_message | User-friendly informations about the state of the cluster
 nodes_count | The number of nodes present in the cluster
-nodes    | A list of resource UUID of `Node` objects present in the cluster
 containers_count | The number of containers present in the cluster
-last_ping   | Date and time of the last time the node was contacted by Arkis
+last_ping   | Date and time of the last time the cluster master node was contacted by Arkis
 created_at  | The date and time when this cluster was created
 updated_at  | The date and time when this cluster was updated last
 
