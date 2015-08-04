@@ -161,6 +161,21 @@ id | The UUID of the cluster to retrieve
 
 Returns a `204` status code if the cluster has been successfully deleted.
 
+## Upgrade a cluster
+
+Upgrade docker daemon and swarm agent of all nodes of the cluster to the latest
+versions available on `Arkis`.
+
+### HTTP Request
+
+`POST /api/v1/clusters/:cluster_id/upgrade`
+
+<aside class="warning">
+Your containers on each node won't be available until the end of the upgrade.
+Beside, each node docker and swarm version will be updated only if the node
+upgrade has been successfully completed.
+</aside>
+
 # Cluster State
 
 States possible for a cluster.

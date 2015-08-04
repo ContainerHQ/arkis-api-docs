@@ -33,7 +33,7 @@ List all nodes available for a cluster. Returns a list of `Node` objects.
 
 ### HTTP Request
 
-`GET /api/v1/clusters/:cluster_id/node`
+`GET /api/v1/clusters/:cluster_id/nodes`
 
 ### Query Parameters
 
@@ -52,7 +52,7 @@ Creates a new node for a cluster.
 
 ### HTTP Request
 
-`POST /api/v1/clusters/:cluster_id/node`
+`POST /api/v1/clusters/:cluster_id/nodes`
 
 ### JSON Parameters
 
@@ -71,7 +71,7 @@ Get all the informations of a specific node.
 
 ### HTTP Request
 
-`GET /api/v1/clusters/:cluster_id/node/:node_id/`
+`GET /api/v1/clusters/:cluster_id/nodes/:node_id/`
 
 ### Query Parameters
 
@@ -86,7 +86,7 @@ Removes a node from the cluster and destroys the node itself. This is irreversib
 
 ### HTTP Request
 
-`DELETE /api/v1/clusters/:cluster_id/node/:node_id/`
+`DELETE /api/v1/clusters/:cluster_id/nodes/:node_id/`
 
 ### Query Parameters
 
@@ -94,6 +94,20 @@ Parameter  | Description
 ---------- | -----------
 cluster_id | The UUID of the clusters wich the node to retrieve belongs to
 node_id    | The UUID of the node to retrieve
+
+## Upgrade a node
+
+Upgrade docker daemon and swarm agent on a node to its cluster versions.
+
+### HTTP Request
+
+`POST /api/v1/clusters/:cluster_id/nodes/:node_id/upgrade`
+
+<aside class="warning">
+Your containers on the node won't be available until the end of the upgrade.
+Beside, the node docker and swarm version will be updated only if the node
+upgrade has been successfully completed.
+</aside>
 
 # Node State
 
