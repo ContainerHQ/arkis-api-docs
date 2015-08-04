@@ -648,6 +648,21 @@ be terminated immediately and you will no longer be able to login to Arkis.
 
 <p>Returns a <code class="prettyprint">204</code> status code if the cluster has been successfully deleted.</p>
 
+<h2 id="upgrade-a-cluster">Upgrade a cluster</h2>
+
+<p>Upgrade docker daemon and swarm agent of all nodes of the cluster to the latest
+versions available on <code class="prettyprint">Arkis</code>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/clusters/:cluster_id/upgrade</code></p>
+
+<aside class="warning">
+Your containers on each node won&rsquo;t be available until the end of the upgrade.
+Beside, each node docker and swarm version will be updated only if the node
+upgrade has been successfully completed.
+</aside>
+
 <h1 id="cluster-state">Cluster State</h1>
 
 <p>States possible for a cluster.</p>
@@ -789,7 +804,7 @@ can be deployed.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/clusters/:cluster_id/node</code></p>
+<p><code class="prettyprint">GET /api/v1/clusters/:cluster_id/nodes</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -831,7 +846,7 @@ can be deployed.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/clusters/:cluster_id/node</code></p>
+<p><code class="prettyprint">POST /api/v1/clusters/:cluster_id/nodes</code></p>
 
 <h3 id="json-parameters">JSON Parameters</h3>
 
@@ -873,7 +888,7 @@ can be deployed.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/clusters/:cluster_id/node/:node_id/</code></p>
+<p><code class="prettyprint">GET /api/v1/clusters/:cluster_id/nodes/:node_id/</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -899,7 +914,7 @@ can be deployed.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE /api/v1/clusters/:cluster_id/node/:node_id/</code></p>
+<p><code class="prettyprint">DELETE /api/v1/clusters/:cluster_id/nodes/:node_id/</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -918,6 +933,20 @@ can be deployed.</p>
 <td>The UUID of the node to retrieve</td>
 </tr>
 </tbody></table>
+
+<h2 id="upgrade-a-node">Upgrade a node</h2>
+
+<p>Upgrade docker daemon and swarm agent on a node to its cluster versions.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/clusters/:cluster_id/nodes/:node_id/upgrade</code></p>
+
+<aside class="warning">
+Your containers on the node won&rsquo;t be available until the end of the upgrade.
+Beside, the node docker and swarm version will be updated only if the node
+upgrade has been successfully completed.
+</aside>
 
 <h1 id="node-state">Node State</h1>
 
