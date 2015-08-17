@@ -6,11 +6,10 @@ can be deployed.
 Attribute   | Description
 ----------- | -----------
 id          | A unique identifier (UUID) for the node generated automatically on creation
-cluster     | The cluster UUID of which the node belongs
+cluster_id  | The cluster UUID of which the node belongs
 name        | A user provided name for the node (see [Regions](/#regions))
 byon        | If the node is provided by Arkis or the user (`bring your own node`)
 master      | Whether the node is the master of its cluster
-token       | Token key used by Arkis agent to reach the node
 labels      | A list of labels to identify the node when running containers (see [Labels](/#labels))
 state       | The state of the node. See the below table for a list of possible states
 state_message | User-friendly informations about the state of the node
@@ -95,9 +94,30 @@ Parameter  | Description
 cluster_id | The UUID of the clusters wich the node to retrieve belongs to
 node_id    | The UUID of the node to retrieve
 
-## Upgrade a node
+## Update an existing node
 
-Upgrade docker daemon and swarm agent on a node to its cluster versions.
+Updates node details and applies the changes automatically.
+
+### HTTP Request
+
+`PATCH /api/v1/clusters/:cluster_id/nodes/:node_id`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+name | (required) Name of the node
+master | (optional) If the node will be the master of its cluster (default: `false`)
+labels | (optional) List of labels to identify the node (see [Labels](/#labels))
+
+<aside class="warning">
+This will update both docker and swarm configurations on the node, the node and its cluster
+will be in updating state until the changes are finished to be processed.
+</aside>
+
+## Upgrade an existing node
+
+Upgrade docker daemon and swarm agent on an existing node to its cluster versions.
 
 ### HTTP Request
 

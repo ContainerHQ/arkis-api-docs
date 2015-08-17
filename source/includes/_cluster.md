@@ -8,12 +8,10 @@ Attribute   | Description
 ----------- | -----------
 id          | A unique identifier (UUID) for the cluster generated automatically on creation
 name        | A user provided name for the cluster
-token       | Token key to reach the cluster
 strategy    | Strategy for ranking the node (see [Strategies](https://docs.docker.com/swarm/scheduler/strategy/))
 state       | State of the cluster
 state_message | User-friendly informations about the state of the cluster
 nodes_count | The number of nodes present in the cluster
-containers_count | The number of containers present in the cluster
 last_ping   | Date and time of the last time the cluster master node was contacted by Arkis
 created_at  | The date and time when this cluster was created
 updated_at  | The date and time when this cluster was updated last
@@ -40,24 +38,20 @@ Accept: application/json
         "state_message": "Create at least one node to work with this cluster",
         "id": "14813a80-19fa-11e5-a214-93ad3da1a84e",
         "name": "staging",
-        "token": "pgb90oharv9qep2gkspjuanpg2sw0zfr",
         "strategy": "binpack",
         "created_at": "2015-06-10T16:11:14.149Z",
         "updated_at": "2015-06-10T16:11:16.149Z",
         "nodes_count": 0,
-        "containers_count": 1,
         "last_ping": "2015-06-10T16:11:16.149Z",
         "state": "empty"
     }, {
         "state_message": "Cluster is deployed and ready",
         "id": "14813a81-19fa-11e5-a214-93ad3da1a84e",
         "name": "production",
-        "token": "2gkspjuanpg2pgb90oharv9qepsw0zfr",
         "strategy": "spread",
         "created_at": "2015-06-05T16:09:20.149Z",
         "updated_at": "2015-06-05T16:09:28.149Z",
         "nodes_count": 7,
-        "containers_count": 12,
         "last_ping": "2015-06-05T16:09:28.149Z",
         "state": "running"
     }]
@@ -95,8 +89,6 @@ Parameter | Description
 name  | (required) A user provided name for the cluster
 strategy | (optional) A user provided strategy for the cluster (e.g. `spread`, `binpack` or `random`, default: `spread`)
 
-If not specified by the user, the default strategy of a cluster will be set to `spread`.
-
 ## Get an existing cluster
 
 ```http
@@ -114,12 +106,10 @@ Accept: application/json
         "state_message": "Create at least one node to work with this cluster",
         "id": "14813a80-19fa-11e5-a214-93ad3da1a84e",
         "name": "grounds-production",
-        "token": "2gkspjuanpg2pgb90oharv9qepsw0zfr",
         "strategy": "spread",
         "created_at": "2015-06-10T16:11:14.149Z",
         "updated_at": "2015-06-10T16:11:13.149Z",
         "nodes_count": 0,
-        "containers_count": 0,
         "last_ping": "2015-06-10T16:11:13.149Z",
         "state": "empty"
     }
@@ -137,6 +127,45 @@ Get all the informations of a specific cluster.
 Parameter | Description
 --------- | -----------
 id | The UUID of the cluster to retrieve
+
+## Update an existing cluster
+
+```http
+PATCH /api/v1/clusters/14813a80-19fa-11e5-a214-93ad3da1a84e/ HTTP/1.1
+Host: api.arkis.io
+Authorization: JWT JSON_WEB_TOKEN
+Accept: application/json
+```
+
+> Example
+
+```json
+{
+    "cluster": {
+        "state_message": "Create at least one node to work with this cluster",
+        "id": "14813a80-19fa-11e5-a214-93ad3da1a84e",
+        "name": "grounds-development",
+        "strategy": "spread",
+        "created_at": "2015-06-10T16:11:14.149Z",
+        "updated_at": "2015-06-10T16:20:13.149Z",
+        "nodes_count": 0,
+        "last_ping": "2015-06-10T16:11:13.149Z",
+        "state": "empty"
+    }
+}
+```
+
+Updates cluster details.
+
+### HTTP Request
+
+`PATCH /api/v1/clusters/:cluster_id/`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+name  | (required) A user provided name for the cluster
 
 ## Destroy a cluster
 

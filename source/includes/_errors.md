@@ -9,6 +9,7 @@ Error Code | Meaning
 403 | Forbidden -- The action or resource requested is forbidden.
 404 | Not Found -- The specified resource could not be found.
 406 | Not Acceptable -- You requested a format that isn't json.
+409 | Conflict -- The action can't currently be treated.
 500 | Internal Server Error -- We had a problem with our server. Please try again later.
 503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
 
