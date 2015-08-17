@@ -22,8 +22,13 @@ However, in order to target your cluster running on **Arkis**, you must specify
 your cluster's **token** by adding to all requests sent to this endpoints the
 following header:
 
-`X-Arkis-Cluster: CLUSTER_TOKEN`
+`X-Arkis-Cluster: ID CLUSTER_ID`
+
+or
+
+`X-Arkis-Cluster: NAME CLUSTER_NAME`
 
 <aside class="notice">
-You must replace <code>CLUSTER_TOKEN</code> with your cluster token.
+You must replace <code>CLUSTER_ID</code> with your cluster id or
+<code>CLUSTER_NAME</code> with your cluster name.
 </aside>
