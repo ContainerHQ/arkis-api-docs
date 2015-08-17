@@ -427,10 +427,6 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <td>A user provided name for the cluster</td>
 </tr>
 <tr>
-<td>token</td>
-<td>Token key to reach the cluster</td>
-</tr>
-<tr>
 <td>strategy</td>
 <td>Strategy for ranking the node (see <a href="https://docs.docker.com/swarm/scheduler/strategy/">Strategies</a>)</td>
 </tr>
@@ -445,10 +441,6 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <tr>
 <td>nodes_count</td>
 <td>The number of nodes present in the cluster</td>
-</tr>
-<tr>
-<td>containers_count</td>
-<td>The number of containers present in the cluster</td>
 </tr>
 <tr>
 <td>last_ping</td>
@@ -484,24 +476,20 @@ be terminated immediately and you will no longer be able to login to Arkis.
         </span><span class="s2">"state_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create at least one node to work with this cluster"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14813a80-19fa-11e5-a214-93ad3da1a84e"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"staging"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pgb90oharv9qep2gkspjuanpg2sw0zfr"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binpack"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:16.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"containers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"last_ping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:16.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"empty"</span><span class="w">
     </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"state_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cluster is deployed and ready"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14813a81-19fa-11e5-a214-93ad3da1a84e"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"production"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2gkspjuanpg2pgb90oharv9qepsw0zfr"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spread"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05T16:09:20.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05T16:09:28.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"containers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
         </span><span class="s2">"last_ping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-05T16:09:28.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
@@ -570,8 +558,6 @@ be terminated immediately and you will no longer be able to login to Arkis.
 </tr>
 </tbody></table>
 
-<p>If not specified by the user, the default strategy of a cluster will be set to <code class="prettyprint">spread</code>.</p>
-
 <h2 id="get-an-existing-cluster">Get an existing cluster</h2>
 <pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1/clusters/14813a80-19fa-11e5-a214-93ad3da1a84e/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
@@ -587,12 +573,10 @@ be terminated immediately and you will no longer be able to login to Arkis.
         </span><span class="s2">"state_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create at least one node to work with this cluster"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14813a80-19fa-11e5-a214-93ad3da1a84e"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grounds-production"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2gkspjuanpg2pgb90oharv9qepsw0zfr"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spread"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:13.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"containers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"last_ping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:13.149Z"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"empty"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -616,6 +600,51 @@ be terminated immediately and you will no longer be able to login to Arkis.
 <tr>
 <td>id</td>
 <td>The UUID of the cluster to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-an-existing-cluster">Update an existing cluster</h2>
+<pre class="highlight http"><code><span class="nf">PATCH</span> <span class="nn">/api/v1/clusters/14813a80-19fa-11e5-a214-93ad3da1a84e/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.arkis.io</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">JWT JSON_WEB_TOKEN</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"cluster"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"state_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create at least one node to work with this cluster"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14813a80-19fa-11e5-a214-93ad3da1a84e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grounds-development"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spread"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:14.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:20:13.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nodes_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_ping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-10T16:11:13.149Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"empty"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Updates cluster details.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH /api/v1/clusters/:cluster_id/</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>(required) A user provided name for the cluster</td>
 </tr>
 </tbody></table>
 
@@ -717,7 +746,7 @@ can be deployed.</p>
 <td>A unique identifier (UUID) for the node generated automatically on creation</td>
 </tr>
 <tr>
-<td>cluster</td>
+<td>cluster_id</td>
 <td>The cluster UUID of which the node belongs</td>
 </tr>
 <tr>
@@ -731,10 +760,6 @@ can be deployed.</p>
 <tr>
 <td>master</td>
 <td>Whether the node is the master of its cluster</td>
-</tr>
-<tr>
-<td>token</td>
-<td>Token key used by Arkis agent to reach the node</td>
 </tr>
 <tr>
 <td>labels</td>
@@ -934,9 +959,44 @@ can be deployed.</p>
 </tr>
 </tbody></table>
 
-<h2 id="upgrade-a-node">Upgrade a node</h2>
+<h2 id="update-an-existing-node">Update an existing node</h2>
 
-<p>Upgrade docker daemon and swarm agent on a node to its cluster versions.</p>
+<p>Updates node details and applies the changes automatically.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH /api/v1/clusters/:cluster_id/nodes/:node_id</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>(required) Name of the node</td>
+</tr>
+<tr>
+<td>master</td>
+<td>(optional) If the node will be the master of its cluster (default: <code class="prettyprint">false</code>)</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>(optional) List of labels to identify the node (see <a href="/#labels">Labels</a>)</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+This will update both docker and swarm configurations on the node, the node and its cluster
+will be in updating state until the changes are finished to be processed.
+</aside>
+
+<h2 id="upgrade-an-existing-node">Upgrade an existing node</h2>
+
+<p>Upgrade docker daemon and swarm agent on an existing node to its cluster versions.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1017,23 +1077,6 @@ Labels can&rsquo;t be updated when the node is already deployed.
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="official-labels">Official Labels</h3>
-
-<p><strong>Arkis</strong> is taking care of specifying the following labels:</p>
-
-<ul>
-<li><code class="prettyprint">storage</code></li>
-<li><code class="prettyprint">region</code></li>
-<li><code class="prettyprint">memory</code></li>
-<li><code class="prettyprint">cpu</code></li>
-<li><code class="prettyprint">disk</code></li>
-<li><code class="prettyprint">fqdn</code></li>
-<li><code class="prettyprint">ip</code></li>
-<li><code class="prettyprint">id</code></li>
-</ul>
-
-<p><strong>This labels are reserved and therefore can&rsquo;t be provided by the user.</strong></p>
 
           <h1 id="node-sizes">Node Sizes</h1>
 
@@ -1234,6 +1277,10 @@ It contains one and more node sizes.</p>
 <tr>
 <td>406</td>
 <td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json.</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict &ndash; The action can&rsquo;t currently be treated.</td>
 </tr>
 <tr>
 <td>500</td>
