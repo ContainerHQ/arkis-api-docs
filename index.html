@@ -69,10 +69,15 @@ and examples on how to execute them.</p>
 your cluster&rsquo;s <strong>token</strong> by adding to all requests sent to this endpoints the
 following header:</p>
 
-<p><code class="prettyprint">X-Arkis-Cluster: CLUSTER_TOKEN</code></p>
+<p><code class="prettyprint">X-Arkis-Cluster: ID CLUSTER_ID</code></p>
+
+<p>or</p>
+
+<p><code class="prettyprint">X-Arkis-Cluster: NAME CLUSTER_NAME</code></p>
 
 <aside class="notice">
-You must replace <code>CLUSTER_TOKEN</code> with your cluster token.
+You must replace <code>CLUSTER_ID</code> with your cluster id or
+<code>CLUSTER_NAME</code> with your cluster name.
 </aside>
 
           <h1 id="authentication">Authentication</h1>
