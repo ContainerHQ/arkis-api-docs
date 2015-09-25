@@ -201,7 +201,7 @@ versions available on `Arkis`.
 
 <aside class="warning">
 Your containers on each node won't be available until the end of the upgrade.
-Beside, each node docker and swarm version will be updated only if the node
+Beside, each node docker and swarm versions will be updated only if the node
 upgrade has been successfully completed.
 </aside>
 
