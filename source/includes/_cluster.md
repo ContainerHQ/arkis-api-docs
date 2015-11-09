@@ -76,7 +76,7 @@ offset      | Limits starting with record number (default: `0`)
 
 ## Create a new cluster
 
-Creates a new cluster without deploying it.
+Creates a new cluster.
 
 ### HTTP Request
 
