@@ -23,7 +23,8 @@ disk        | Node storage size in GB
 memory      | Node memory in MB
 last_ping   | Date and time of the last time the node was contacted by Arkis
 docker_version | Docker's version used in the node
-created_at  | The date and time when this node was deployed
+created_at  | The date and time when this node was created
+deployed_at | The date and time when this node was deployed
 updated_at  | The date and time when this node was updated last
 
 ## List all nodes of a cluster
