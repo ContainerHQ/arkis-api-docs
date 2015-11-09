@@ -29,7 +29,7 @@ A label object is represented as a simple json object.
 
 ```json
 {
-    "label": {
+    "labels": {
         "environment": "production",
         "project": "my_app"
     }
