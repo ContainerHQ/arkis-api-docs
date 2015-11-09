@@ -1,6 +1,6 @@
 # Cluster
 
-A cluster is a group of nodes wich are on the same private network.
+A cluster is a group of nodes wich are on the same docker swarm cluster.
 
 ### Attributes
 
