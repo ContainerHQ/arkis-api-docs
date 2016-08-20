@@ -1,8 +1,6 @@
 # Arkis API Documentation
 [![Circle CI](https://circleci.com/gh/ContainerHQ/arkis-api-docs.svg?style=svg)](https://circleci.com/gh/ContainerHQ/arkis-api-docs)
 
-**Arkis** documentation is available online [here](http://containerhq.github.io/arkis-api-docs/).
-
 This documentation is written using
 [Markdown](https://guides.github.com/features/mastering-markdown/).
 
